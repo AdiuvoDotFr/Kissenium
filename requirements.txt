@@ -1,0 +1,11 @@
+cv2wrap==1.0
+html-testRunner==1.1.1
+Jinja2==2.9.5
+MarkupSafe==1.0
+mss==3.0.1
+numpy==1.13.1
+olefile==0.44
+Pillow==4.2.1
+pygame==1.9.3
+PyYAML==3.12
+selenium==3.5.0
