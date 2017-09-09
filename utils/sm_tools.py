@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import string
 
@@ -62,8 +63,4 @@ class SmallTools:
 
     @staticmethod
     def sanitize_filename(filename):
-        illegal_chars = ['/']
-        for c in illegal_chars:
-            if c in filename:
-                filename = filename.replace(c, '#')
-        return filename
+        return re.sub('[^A-Za-z0-9.]+', '_', filename)

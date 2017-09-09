@@ -69,9 +69,9 @@ class TestDemo(GenericTest):
             self.logger.info("Element iteration demo : " + gr.text)
 
         """ We first go into wikipedia, run an assert, and then go back """
-        self.st.click_first_xpath(self.browser, "//a[contains(., 'Selenium (informatique) — Wikipédia')]")
+        self.st.click_first_xpath(self.browser, "//a[contains(., 'Sélénium — Wikipédia')]")
         title = self.st.get_element_by_id(self.browser, 'firstHeading')
-        self.l_assertIn("Selenium", title.text)
+        self.l_assertIn("Sélénium", title.text)
         self.browser.back()
 
         """ We are going to the selenium official website """

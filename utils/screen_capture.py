@@ -3,6 +3,7 @@ import mss
 from utils.sm_tools import SmallTools
 from utils.config import Config
 from PIL import Image
+from utils.log import Log4Kissenium
 
 
 class ScreenCapture:
@@ -18,7 +19,7 @@ class ScreenCapture:
     def capture(self, browser, suffix=''):
         if suffix != '':
             suffix = '-' + suffix
-        filename = SmallTools.sanitize_filename(self.test + suffix + '.png')
+        filename = SmallTools.sanitize_filename('%s%s.png' % (self.test, suffix))
 
         if self.config.get_capture_size() == 'Full':
             self.capture_screen(filename)
