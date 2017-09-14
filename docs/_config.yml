@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+title: Kissenium
+description: Minimal framework for Selenium test automation
+show_downloads: true
