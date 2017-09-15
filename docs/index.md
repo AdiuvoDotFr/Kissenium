@@ -2,9 +2,13 @@
 layout: default
 ---
 
-# KISSENIUM , SELENIUM FRAMEWORK
+## KISSENIUM , SELENIUM FRAMEWORK
 
 > THIS SOFTWARE IS CURRENTLY IN ALPHA DEVELOPMENT
+
+Software created by [Adiuvo](https://www.adiuvo.fr/).
+
+Design, logo by [Mr Coffee-Time](http://www.coffee-time.fr/).
 
 Contributors are welcome
 
@@ -16,9 +20,9 @@ Kissenium is still in development, but already offer some good functions for run
 
 This software is based on unittest, HTMLTestRunner, and Selenium.
 
-There are also many python packages used, please refer to packages.pip to learn more.
+There are also many python packages used, please refer to [requirements.txt](https://github.com/AdiuvoDotFr/Kissenium/blob/master/requirements.txt) to learn more.
 
-## Functionalities
+### Functionalities
 
 * Create and run selenium tests quickly
 * Obtain screen captures or screen videos about your tests
