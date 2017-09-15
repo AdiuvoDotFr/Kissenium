@@ -1,3 +1,5 @@
+![Kissenium Logo](/docs/assets/images/kissenium.png)
+
 # KISSENIUM
 
 # THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
@@ -8,26 +10,29 @@ Contributors are welcome
 
 Kissenium is a micro selenium test framework.
 
-Kissenium is still in development, but already offer some good functions for running professionals selenium tests.
+Kissenium is still in development, but already offer some good functionnalities for running professionals selenium tests.
 
 This software is based on unittest, HTMLTestRunner, and Selenium.
 
 There are also many python packages used, please refer to packages.pip to learn more.
 
-## Functionalities
+![Kissenium Mockup](/docs/assets/images/kissenium-mockup.jpg)
 
-* Create and run selenium tests quickly
-* Obtain capture or videos about your tests
-* Result in html files (thanks to HTMLTestRunner)
-* Get logs about your tests simply by using the toolbox functions
+## Functionalities (done and to do)
 
-## Installation
+* [x] Create and run selenium tests quickly
+* [x] Obtain capture or videos about your tests
+* [x] Result in html files (thanks to HTMLTestRunner)
+* [x] Get logs about your tests simply by using the toolbox functions
+* [x] Read parameters for ini file
+* [ ] Slave mode (read orders from webpage)
+* [ ] Demo mode : print message and show where the test is clicking
+* [ ] Selenium grid
+* [ ] Read data from csv files
+* [ ] Run many tests in the same time
 
-You must have `ffmepg` and `python3` installed on your computer.
+## Installation, documentation
 
-This procedure will show you how to install it in a python3 virtual environment.
+Please refer to the [official documentation](http://www.kissenium.org/).
 
-```bash
-./install.sh
-
-```
+You will find procedures to install Kissenium on linux and windows.
