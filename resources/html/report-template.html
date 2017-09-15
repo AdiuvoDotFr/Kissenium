@@ -28,7 +28,7 @@
                     </g>
                 </svg>
             </div>
-            <div class="col-xs-9">
+            <div class="col-xs-9 text-right">
                 <h2 class="text-capitalize">{{title}}</h2>
                 <p class='attribute'><strong>Start Time: </strong>{{headers.start_time}}</p>
                 <p class='attribute'><strong>Duration: </strong>{{headers.duration}}</p>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10">
+            <div class="col-xs-12">
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
@@ -48,7 +48,7 @@
                         {% for eachTestCase, status, errorType, errorMessage in tests_results %}
                             <tr class='{{status}}'>
                                 <td class="col-xs-9">{{eachTestCase}}</td>
-                                <td class="col-xs-3">
+                                <td class="col-xs-3 text-right">
                                     <span class="label label-{{status}}">
                                         {% if "success" == status %}
                                             Pass
