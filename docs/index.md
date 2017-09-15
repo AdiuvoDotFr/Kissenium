@@ -2,6 +2,8 @@
 layout: default
 ---
 
+[Home](index.html) | [Documentation](documentation.html) | [Install on linux](install-on-linux.html) | [Install on windows](install-on-windows.html)
+
 ## KISSENIUM , SELENIUM FRAMEWORK
 
 > THIS SOFTWARE IS CURRENTLY IN ALPHA DEVELOPMENT

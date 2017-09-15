@@ -2,6 +2,8 @@
 layout: default
 ---
 
+[Home](index.html) | [Documentation](documentation.html) | [Install on linux](install-on-linux.html) | [Install on windows](install-on-windows.html)
+
 ## Installing Kissenium on Linux
 
 To install Kissenium on linux you will need to have python3, pip3 and ffmpeg installed.
