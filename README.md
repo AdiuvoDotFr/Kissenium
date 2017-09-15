@@ -1,6 +1,6 @@
-<div style="text-align:center;">
-    <img src ="/docs/assets/images/kissenium.png" style="max-height:250px;"/>
-</div>
+<p align="center">
+    <img src ="/docs/assets/images/kissenium.png" width="250" height="250"/>
+</p>
 
 > THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
 
