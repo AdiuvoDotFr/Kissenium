@@ -39,7 +39,7 @@ There are also many python packages used, please refer to packages.pip to learn 
 
 ## Installation, documentation
 
-Installing Kissenium on Linux : | [Install on linux](install-on-linux.html) | 
+Installing Kissenium on Linux : [Install on linux](install-on-linux.html)
 
 Installing Kissenium on Windows : [Install on windows](install-on-windows.html)
 
