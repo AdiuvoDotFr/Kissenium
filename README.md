@@ -4,7 +4,7 @@
 
 > THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
 
-Contributors are welcome
+**Contributors are welcome**
 
 ## About
 
@@ -38,3 +38,9 @@ There are also many python packages used, please refer to packages.pip to learn 
 Please refer to the [official documentation](http://www.kissenium.org/).
 
 You will find procedures to install Kissenium on linux and windows.
+
+## Authors, Contributors
+
+Software originally created by : [Adiuvo](https://www.adiuvo.fr)([Github](https://github.com/AdiuvoDotFr/Kissenium))
+
+Logo, design by : [Mr Coffee-Time](http://www.coffee-time.fr/)
