@@ -1,3 +1,5 @@
+<div style="text-align:center; max-height:250px;"><img src ="/docs/assets/images/kissenium.png" /></div>
+
 ![Kissenium Logo](/docs/assets/images/kissenium.png)
 
 > THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
