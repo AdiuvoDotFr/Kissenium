@@ -1,6 +1,6 @@
-<div style="text-align:center; max-height:250px;"><img src ="/docs/assets/images/kissenium.png" /></div>
-
-![Kissenium Logo](/docs/assets/images/kissenium.png)
+<div style="text-align:center;">
+    <img src ="/docs/assets/images/kissenium.png" style="max-height:250px;"/>
+</div>
 
 > THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
 
