@@ -6,7 +6,7 @@ layout: default
 
 ## KISSENIUM , SELENIUM FRAMEWORK
 
-> THIS SOFTWARE IS CURRENTLY IN ALPHA DEVELOPMENT
+> THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
 
 Software created by [Adiuvo](https://www.adiuvo.fr/).
 
