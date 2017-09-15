@@ -1,8 +1,6 @@
 ![Kissenium Logo](/docs/assets/images/kissenium.png)
 
-# KISSENIUM
-
-# THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
+> THIS SOFTWARE IS CURRENTLY IN BETA DEVELOPMENT
 
 Contributors are welcome
 
@@ -11,6 +9,8 @@ Contributors are welcome
 Kissenium is a micro selenium test framework.
 
 Kissenium is still in development, but already offer some good functionnalities for running professionals selenium tests.
+
+Kissenium will give you the ability to create Selenium tests without taking care of the reports. Just create your selenium tests, configure your kissenium.ini file, and run kissenium.
 
 This software is based on unittest, HTMLTestRunner, and Selenium.
 
