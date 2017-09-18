@@ -23,18 +23,17 @@ class BaseTest(unittest.TestCase):
         self.get_logger()
         self.get_config()
         self.get_capture_handler()
-        """if self.config.get_browser() == "Chrome":
-            Platform.get_webdriver()
-            self.logger.info(os.getcwd())
-            chromedriver = os.getcwd() + "/resources/webdriver/chrome/chromedriver_linux64/chromedriver"
-            os.environ["webdriver.chrome.driver"] = chromedriver
-            self.browser = webdriver.Chrome(chromedriver)
-            # self.browser = webdriver.Chrome(log_path='reports/Kissenium/geckodriver.log')
-        else:
-            self.browser = webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log')"""
         self.browser = Platform.get_webdriver(self.config.get_browser())
         self.actionChains = ActionChains(self.browser)
         self.st = SeleniumToolBox(self.logger, self.screenshot)
+
+        if self.config.get_browser_size() == "Maximize":
+            self.browser.maximize_window()
+        else:
+            width, height = self.config.get_browser_size().split('*')
+            self.browser.set_window_size(width, height)
+
+
 
     def self_teardown(self):
         self.browser.quit()
