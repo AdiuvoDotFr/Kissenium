@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from utils.config import Config
 
 
@@ -112,3 +113,10 @@ class SeleniumToolBox:
             self.logger.info("[click_first_xpath] Success : %s " % id)
         except Exception as e:
             self.handle_exception(browser, "[click_id] ERROR : %s" % e)
+
+    def close_tab(self, browser):
+        try:
+            browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 'w')
+            self.logger.info("[close_tab] Success")
+        except Exception as e:
+            self.handle_exception(browser, "[close_tab] ERROR : %s" % e)
