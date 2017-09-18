@@ -49,3 +49,6 @@ class Config:
 
     def get_browser(self):
         return self.get_default('Browser', "Chrome")
+
+    def get_browser_size(self):
+        return self.get_default('BrowserSize', "Maximize")
