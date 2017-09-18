@@ -5,6 +5,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from utils.config import Config
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class SeleniumToolBox:
@@ -120,3 +121,11 @@ class SeleniumToolBox:
             self.logger.info("[close_tab] Success")
         except Exception as e:
             self.handle_exception(browser, "[close_tab] ERROR : %s" % e)
+
+    def hover_by_xpath(self, browser, xpath):
+        try:
+            element_to_hover_over = browser.find_element_by_xpath(xpath)
+            ActionChains(browser).move_to_element(element_to_hover_over).perform()
+            self.logger.info("[hover_by_xpath] Success")
+        except Exception as e:
+            self.handle_exception(browser, "[hover_by_xpath] ERROR : %s" % e)
