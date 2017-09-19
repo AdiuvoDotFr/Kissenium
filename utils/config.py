@@ -52,3 +52,6 @@ class Config:
 
     def get_browser_size(self):
         return self.get_default('BrowserSize', "Maximize")
+
+    def get_browser_message(self):
+        return self.get_default('BrowserMessage', False)
