@@ -8,6 +8,7 @@ from utils.config import Config
 from utils.screen_capture import ScreenCapture
 from selenium.webdriver.common.action_chains import ActionChains
 from utils.selenium_toolbox import SeleniumToolBox
+from utils.browser_message import InjectMessage
 
 
 class BaseTest(unittest.TestCase):
@@ -26,6 +27,7 @@ class BaseTest(unittest.TestCase):
         self.browser = Platform.get_webdriver(self.config.get_browser())
         self.actionChains = ActionChains(self.browser)
         self.st = SeleniumToolBox(self.logger, self.screenshot)
+        self.message = InjectMessage(self.config.get_browser_message(), self.logger)
 
         if self.config.get_browser_size() == "Maximize":
             self.browser.maximize_window()
