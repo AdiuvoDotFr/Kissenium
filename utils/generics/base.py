@@ -27,7 +27,7 @@ class BaseTest(unittest.TestCase):
         self.browser = Platform.get_webdriver(self.config.get_browser())
         self.actionChains = ActionChains(self.browser)
         self.st = SeleniumToolBox(self.logger, self.screenshot)
-        self.message = InjectMessage(self.config.get_browser_message())
+        self.message = InjectMessage(self.config.get_browser_message(), self.logger)
 
         if self.config.get_browser_size() == "Maximize":
             self.browser.maximize_window()
