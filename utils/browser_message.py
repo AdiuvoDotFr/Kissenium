@@ -2,11 +2,14 @@
 import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
 
 
 class InjectMessage:
     is_actived = False
     logger = None
+    page_wait = None
     js_injector = """
             var include_js = function(url, callback){
                 var script = document.createElement('script');
@@ -34,11 +37,12 @@ class InjectMessage:
             }
          """
 
-    def __init__(self, is_activated, logger):
+    def __init__(self, is_activated, logger, page_wait):
         self.is_actived = is_activated
         self.logger = logger
+        self.page_wait = page_wait
 
-    def show_message(self, browser, message, message_timing=4, pause=2):
+    def show(self, browser, message, message_timing=4, pause=2):
         self.logger.info("[InjectMessage] show_message: Messaging status : %s | Message to send : %s " % (self.is_actived, message))
         if self.is_actived == "True":
             self.inject_dependencies(browser)
@@ -54,10 +58,12 @@ class InjectMessage:
                 browser.execute_script(self.js_injector +
                                        """
                                         include_css('https://cdn.rawgit.com/silvio-r/spop/gh-pages/dist/spop.min.css', function(){});
-                                        include_js('//cdn.rawgit.com/silvio-r/spop/gh-pages/dist/spop.min.js', function(){});
-                                        create_target();
+                                        include_js('//cdn.rawgit.com/silvio-r/spop/gh-pages/dist/spop.min.js', 
+                                                    function(){ create_target(); });
                                        """)
-                time.sleep(3)
+                WebDriverWait(browser, int(self.page_wait)).until(
+                    ec.presence_of_element_located((By.ID, "kissenium"))
+                )
                 self.logger.info("[InjectMessage] inject_dependencies: Dependencies injected!")
 
 
