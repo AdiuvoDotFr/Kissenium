@@ -1,14 +1,12 @@
 # coding: utf-8
 import unittest
-import os
 from utils.platform import Platform
-from selenium import webdriver
 from utils.log import Log4Kissenium
 from utils.config import Config
 from utils.screen_capture import ScreenCapture
 from selenium.webdriver.common.action_chains import ActionChains
 from utils.selenium_toolbox import SeleniumToolBox
-from utils.browser_message import InjectMessage
+from utils.js_tools import JsTools
 
 
 class BaseTest(unittest.TestCase):
@@ -27,13 +25,13 @@ class BaseTest(unittest.TestCase):
         self.browser = Platform.get_webdriver(self.config.get_browser())
         self.actionChains = ActionChains(self.browser)
         self.st = SeleniumToolBox(self.logger, self.screenshot)
-        self.message = InjectMessage(self.config.get_browser_message(), self.logger)
+        self.js = JsTools(self.config.get_message_status(), self.config.get_dim_status(), self.logger, self.config.get_page_wait())
 
         if self.config.get_browser_size() == "Maximize":
-            self.browser.maximize_window()
+            self.maximize()
         else:
             width, height = self.config.get_browser_size().split('*')
-            self.browser.set_window_size(width, height)
+            self.resize_window(width, height)
 
 
 
@@ -209,3 +207,22 @@ class BaseTest(unittest.TestCase):
             self.logger.info("AssertNotIn : %s is not in %s" % (a, b))
         except AssertionError:
             self.assert_error_handler("AssertNotIn : %s IS in %s" % (a, b), stop_on_fail)
+
+    def maximize(self):
+        """
+        Maximize browser window
+        :return: Nothing
+        """
+        self.browser.maximize_window()
+        self.logger.info("Browser window has been maximized.")
+
+    def resize_window(self, width, height):
+        """
+        Resize browser window to width and height
+        :param width: Int
+        :param height: Int
+        :return: Nothing
+        """
+        self.browser.set_window_size(width, height)
+        self.logger.info("Browser window has been resized to : %s x %s." % (width, height))
+

@@ -6,4 +6,22 @@ layout: default
 
 ## Documentation
 
-> We are creating the page
+> This page is not finished yet
+
+### kissenium.ini
+
+Parameter | Values
+----------|-------
+LogLevel | DEBUG, INFO, WARNING, ERROR
+CaptureOnAssertFail | True, False
+CaptureOnFail | True, False
+CaptureSize | Full, Browser
+RecordScenarios | True, False
+CaptureEndOfTest | True, False
+FailOnAssertError | Full, Browser
+FailOnError | True, False
+PageWait | Integer
+Browser | Firefox, Chrome
+BrowserSize | Maximize, width*height
+BrowserMessage | True, False
+DimForDemo | True, False

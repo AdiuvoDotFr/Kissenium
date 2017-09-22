@@ -53,5 +53,8 @@ class Config:
     def get_browser_size(self):
         return self.get_default('BrowserSize', "Maximize")
 
-    def get_browser_message(self):
+    def get_message_status(self):
         return self.get_default('BrowserMessage', False)
+
+    def get_dim_status(self):
+        return self.get_default('DimForDemo', False)

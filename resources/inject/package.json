@@ -1,0 +1,28 @@
+{
+  "name": "kissenium",
+  "version": "0.0.5",
+  "description": "Here we concat js and css sources to inject into the webpage tested.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdiuvoDotFr/Kissenium.git"
+  },
+  "keywords": [
+    "Kissenium"
+  ],
+  "author": "Adiuvo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdiuvoDotFr/Kissenium/issues"
+  },
+  "homepage": "https://github.com/AdiuvoDotFr/Kissenium#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-minify": "^1.0.0"
+  }
+}
