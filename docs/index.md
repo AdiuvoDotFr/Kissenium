@@ -22,7 +22,7 @@ This software is based on unittest, HTMLTestRunner, and Selenium.
 
 There are also many python packages used, please refer to packages.pip to learn more.
 
-![Kissenium Mockup](/assets/images/kissenium-mockup.jpg)
+![Kissenium Mockup](/docs/assets/images/kissenium-mockup.jpg)
 
 ## Functionalities (done and to do)
 
@@ -32,19 +32,26 @@ There are also many python packages used, please refer to packages.pip to learn 
 * [x] Get logs about your tests simply by using the toolbox functions
 * [x] Read parameters for ini file
 * [ ] Slave mode (read orders from webpage)
-* [ ] Demo mode : print message and show where the test is clicking
+* [x] Demo mode : print message and show where the test is clicking (experimental)
 * [ ] Selenium grid
 * [ ] Read data from csv files
 * [ ] Run many tests in the same time
 
 ## Installation, documentation
 
-Installing Kissenium on Linux : [Install on linux](install-on-linux.html)
+Please refer to the [official documentation](http://www.kissenium.org/).
 
-Installing Kissenium on Windows : [Install on windows](install-on-windows.html)
+You will find procedures to install Kissenium on linux and windows.
 
 ## Authors, Contributors
 
 Software originally created by : [Adiuvo](https://www.adiuvo.fr)([Github](https://github.com/AdiuvoDotFr/Kissenium))
 
 Logo, design by : [Mr Coffee-Time](http://www.coffee-time.fr/)
+
+## External resources
+
+[Selenium](http://www.seleniumhq.org/)
+[Jquery](https://jquery.com/)
+[Jquery dim background](https://github.com/andywer/jquery-dim-background)
+[Small pop](https://github.com/silvio-r/spop)
