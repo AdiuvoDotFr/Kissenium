@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<style>
+    body{margin:0;padding:0;background:#FFF;overflow-x:hidden;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}a,button{transition: all .3s ease-in-out;outline: none!important} a:hover{text-decoration: none;cursor:pointer}#page-loading-blocs-notifaction{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center}.bloc{width:100%;clear:both;background: 50% 50% no-repeat;padding:0 50px;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;position:relative;}.bloc .container{padding-left:0;padding-right:0;}.bloc-lg{padding:100px 50px;}.bloc-md{padding:50px;}.bloc-sm{padding:20px 50px;}.d-bloc{color:rgba(255,255,255,.7);}.d-bloc button:hover{color:rgba(255,255,255,.9);}.d-bloc .icon-round,.d-bloc .icon-square,.d-bloc .icon-rounded,.d-bloc .icon-semi-rounded-a,.d-bloc .icon-semi-rounded-b{border-color:rgba(255,255,255,.9);}.d-bloc .divider-h span{border-color:rgba(255,255,255,.2);}.d-bloc .a-btn,.d-bloc .navbar a,.d-bloc .navbar-brand, .d-bloc a .icon-sm, .d-bloc a .icon-md, .d-bloc a .icon-lg, .d-bloc a .icon-xl, .d-bloc h1 a, .d-bloc h2 a, .d-bloc h3 a, .d-bloc h4 a, .d-bloc h5 a, .d-bloc h6 a, .d-bloc p a{color:rgba(255,255,255,.6);}.d-bloc .a-btn:hover,.d-bloc .navbar a:hover,.d-bloc .navbar-brand:hover,.d-bloc a:hover .icon-sm, .d-bloc a:hover .icon-md, .d-bloc a:hover .icon-lg, .d-bloc a:hover .icon-xl, .d-bloc h1 a:hover, .d-bloc h2 a:hover, .d-bloc h3 a:hover, .d-bloc h4 a:hover, .d-bloc h5 a:hover, .d-bloc h6 a:hover, .d-bloc p a:hover{color:rgba(255,255,255,1);}.d-bloc .navbar-toggle .icon-bar{background:rgba(255,255,255,1);}.d-bloc .btn-wire,.d-bloc .btn-wire:hover{color:rgba(255,255,255,1);border-color:rgba(255,255,255,1);}.d-bloc .panel{color:rgba(0,0,0,.5);}.d-bloc .panel button:hover{color:rgba(0,0,0,.7);}.d-bloc .panel icon{border-color:rgba(0,0,0,.7);}.d-bloc .panel .divider-h span{border-color:rgba(0,0,0,.1);}.d-bloc .panel .a-btn{color:rgba(0,0,0,.6);}.d-bloc .panel .a-btn:hover{color:rgba(0,0,0,1);}.d-bloc .panel .btn-wire, .d-bloc .panel .btn-wire:hover{color:rgba(0,0,0,.7);border-color:rgba(0,0,0,.3);}.d-bloc .panel,.l-bloc{color:rgba(0,0,0,.5);}.d-bloc .panel button:hover,.l-bloc button:hover{color:rgba(0,0,0,.7);}.l-bloc .icon-round,.l-bloc .icon-square,.l-bloc .icon-rounded,.l-bloc .icon-semi-rounded-a,.l-bloc .icon-semi-rounded-b{border-color:rgba(0,0,0,.7);}.d-bloc .panel .divider-h span,.l-bloc .divider-h span{border-color:rgba(0,0,0,.1);}.d-bloc .panel .a-btn,.l-bloc .a-btn,.l-bloc .navbar a,.l-bloc .navbar-brand,.l-bloc a .icon-sm, .l-bloc a .icon-md, .l-bloc a .icon-lg, .l-bloc a .icon-xl, .l-bloc h1 a, .l-bloc h2 a, .l-bloc h3 a, .l-bloc h4 a, .l-bloc h5 a, .l-bloc h6 a, .l-bloc p a{color:rgba(0,0,0,.6);}.d-bloc .panel .a-btn:hover,.l-bloc .a-btn:hover,.l-bloc .navbar a:hover, .l-bloc .navbar-brand:hover, .l-bloc a:hover .icon-sm, .l-bloc a:hover .icon-md, .l-bloc a:hover .icon-lg, .l-bloc a:hover .icon-xl, .l-bloc h1 a:hover, .l-bloc h2 a:hover, .l-bloc h3 a:hover, .l-bloc h4 a:hover, .l-bloc h5 a:hover, .l-bloc h6 a:hover, .l-bloc p a:hover{color:rgba(0,0,0,1);}.l-bloc .navbar-toggle .icon-bar{color:rgba(0,0,0,.6);}.d-bloc .panel .btn-wire,.d-bloc .panel .btn-wire:hover,.l-bloc .btn-wire,.l-bloc .btn-wire:hover{color:rgba(0,0,0,.7);border-color:rgba(0,0,0,.3);}.voffset{margin-top:30px;}.navbar{margin-bottom: 0;z-index:1;}.navbar-brand{height:auto;padding:3px 15px;font-size:25px;font-weight:normal;font-weight:600;line-height:44px;}.navbar-brand img{max-height: 200px;margin: 0 5px 0 0;display:inline;}.nav-center .navbar-brand img{margin:0;}.navbar .nav{padding-top: 2px;margin-right: -16px;float:right;z-index:1;}.nav > li{float:left;margin-top:4px;font-size:16px;}.navbar-nav .open .dropdown-menu > li > a{text-align: inherit;}.nav > li a:hover, .nav > li a:focus{background:transparent;}.navbar-toggle{margin: 10px 10px 0 0;border: 0px;}.navbar-toggle:hover{background:transparent!important;}.navbar-toggle .icon-bar{background-color: rgba(0,0,0,.5);width: 26px;} .nav-invert .navbar .nav{float:left;}.nav-invert .navbar-header, .nav-invert .navbar-brand{float:right;position:relative;z-index:2;}@media (min-width: 768px){.site-navigation{ position:absolute;top:50%;right:20px;transform:translate(0, -50%);-webkit-transform:translateY(-50%);} .nav > li .dropdown-menu a,.nav > li .dropdown-menu a:hover{color:#484848;} .nav-invert .site-navigation{left:0;right:0;} .nav-center{text-align:center;} .nav-center .navbar-header{width:100%;} .nav-center .navbar-header, .nav-center .navbar-brand, .nav-center .nav > li{float: none;display:inline-block;} .nav-center .site-navigation{position:relative;width:100%;right:0;margin-right:0px;margin-top:20px;}.nav-center.mini-nav .navbar-toggle{float:none;margin: 10px auto 0;}}.nav > li > .dropdown a{background: none!important;display: block;padding: 14px 15px;}nav .caret{margin: 0 5px;} .dropdown-menu .dropdown-menu{top:-8px;left:100%;}.dropdown-menu .dropmenu-flow-right{top:100%;left:0;margin-left: -1px;border-top-left-radius: 0;border-top-right-radius: 0;}.dropdown-menu .dropdown span{border: 4px solid black;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;margin: 6px -5px 0 0!important;float: right;}.mg-clear{margin:0;}.mg-md{margin-top:10px;margin-bottom:20px;}.btn{margin: 0 5px 5px 0;}.btn.pull-right{margin: 0 0 5px 5px;}.btn-d,.btn-d:hover,.btn-d:focus{color:#FFF;background:rgba(0,0,0,.3);}button{outline: none!important;}.a-btn{padding: 6px 10px 6px 0;line-height: 1.42857143;display:inline-block;}.text-center .a-btn{padding: 6px 0;}.a-block{width:100%;text-align:left;}.text-center .a-block{text-align:center;}.icon-spacer{margin-right:5px;}.panel{border:0;box-shadow: 0 0 2px rgba(0,0,0,.4);}.panel-heading, .panel-footer{background-color: inherit;border-color: rgba(0,0,0,.1)!important;}.panel-sq, .panel-sq .panel-heading, .panel-sq .panel-footer{border-radius:0;}.panel-rd{border-radius:30px;}.panel-rd .panel-heading{border-radius:29px 29px 0 0;}.panel-rd .panel-footer{border-radius:0 0 29px 29px;}.divider-h{padding:20px 0;}.divider-h span{display: block;border-top:1px solid transparent;}.divider-half{width: 50%;margin: 0 auto;}.dropdown-menu .divider-h,.dropdown-menu .divider-half{padding:0;}.carousel{display:inline-block;vertical-align:bottom;}.full-width-bloc .carousel{width:100%;}.carousel .item img{margin-right:auto;margin-left:auto;}.carousel-control span{position: absolute;top: 50%;z-index: 5;display: inline-block;}.carousel-control{color:#FFF!important;text-shadow: none;}.carousel-indicators li{margin: 0 4px;}.carousel-indicators .active{margin: 0 4px -1px;}.carousel-control.left span{margin-left:-15px;}.no-shadows .carousel-control.left, .no-shadows .carousel-control.right{background-image: none;}.scrollToTop{width:40px;height:40px;position:fixed;bottom:20px;right:20px;opacity: 0;z-index: 500;transition: all .3s ease-in-out;}.scrollToTop span{margin-top: 6px;}.showScrollTop{font-size: 14px;opacity: 1;}h1,h2,h3,h4,h5,h6,p,label,.btn,a{font-family:"Helvetica";text-shadow:0px 0px 0px #000000;}.container{max-width:1170px;}.built-with-blocs-bloc p{font-size:11px;font-family:"helvetica";font-weight:bold;color:rgba(255,255,255,0.8);}.stat-bloc-text{font-size:44px;text-align:center;font-weight:bold;}.stat-bloc-sub-text{font-size:16px;text-align:center;text-transform:uppercase;}.bgc-rich-electric-blue{background-color:#0096D0;}.bgc-white{background-color:#ffffff;}.tc-islamic-green{color:#008E00!important;}.tc-black{color:#000000!important;}.tc-ferrari-red{color:#FF2600!important;}.btn-medium-electric-blue{background:#005392;color:#FFFFFF!important;}.btn-medium-electric-blue:hover{background:#004275!important;color:#FFFFFF!important;}.ltc-white{color:#FEFFFF!important;}.ltc-white:hover{color:#cbcccc!important;}.icon-medium-electric-blue{color:#005392!important;border-color:#005392!important;}@media (max-width: 1024px);{.bloc{ padding-left: 20px;padding-right: 20px;}    .bloc.full-width-bloc, .bloc-tile-2.full-width-bloc .container, .bloc-tile-3.full-width-bloc .container, .bloc-tile-4.full-width-bloc .container{padding-left: 0;padding-right: 0;}}@media (max-width: 992px) and (min-width: 768px);{.navbar .nav{ max-width:80% } .nav-center.navbar .nav{max-width:100% }}@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {.b-parallax{background-attachment:scroll}}@media (max-width: 991px);{.container{width:100%}    .b-parallax{background-attachment:scroll}    .page-container, #hero-bloc{overflow-x: hidden;position: relative}     .bloc-group, .bloc-group .bloc{display:block;width:100%}    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{padding-left: 10px;padding-right: 10px}}@media (max-width: 767px);{.page-container{ overflow-x: hidden;position:relative;}    h1,h2,h3,h4,h5,h6,p,#disqus_thread{padding-left:10px!important;padding-right:10px!important;}    #hero-bloc h1{font-size:40px;}    #hero-bloc h2{font-size:34px;}    #hero-bloc h3{font-size:25px;}    .b-parallax{background-attachment:scroll;}    .navbar .nav{padding-top: 0;border-top:1px solid rgba(0,0,0,.2);float:none!important;}    .navbar.row{margin-left: 0;margin-right: 0;}    .site-navigation{position:inherit;transform:none;-webkit-transform:none;-ms-transform:none;}      .nav > li{margin-top: 0;border-bottom:1px solid rgba(0,0,0,.1);background:rgba(0,0,0,.05);text-align: left;padding-left:15px;width:100%;}    .nav > li:hover{background:rgba(0,0,0,.08);}    .dropdown .dropdown a .caret{float: none;margin: 5px 0 0 10px!important;border: 4px solid black;border-bottom-color: transparent;border-right-color: transparent;border-left-color: transparent;}        #hero-bloc .navbar .nav{background:rgba(0,0,0,.8);}    #hero-bloc .navbar .nav a{color:rgba(255,255,255,.6);}    .hero{padding:50px 0;}    .hero-nav{left:-1px;right:-1px;}    .navbar-collapse{padding:0;overflow-x: hidden;-webkit-box-shadow: none;box-shadow: none;}    .navbar-brand img{max-height: 40px;width:auto;}    .nav-invert .navbar-header{float: none;width:100%;}    .nav-invert .navbar-toggle{float:left;}    .bloc{padding-left: 0;padding-right: 0;}    .bloc-xxl,.bloc-xl,.bloc-lg{padding: 40px 0;}    .bloc-sm,.bloc-md{padding-left: 0;padding-right: 0;}    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{padding-left:0;padding-right:0;}    .a-block{padding:0 10px;}    .btn-dwn{display:none;}    .voffset{margin-top:5px;}    .voffset-md{margin-top:20px;}    .voffset-lg{margin-top:30px;}    form{padding:5px;}    .close-lightbox{display:inline-block;}    .video-bg-container{display:none;}    .blocsapp-device-iphone5{background-size: 216px 425px;padding-top:60px;width:216px;height:425px;}    .blocsapp-device-iphone5 img{width: 180px;height: 320px;}}@media (max-width: 400px);{.bloc{ padding-left: 0;padding-right: 0;-webkit-background-size: auto 200%;-moz-background-size: auto 200%;-o-background-size: auto 200%;background-size: auto 200%;}}@media (max-width: 767px){.bloc-mob-center-text{ text-align:center;} }
+	</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>{{title}}</title>
+
+    
+<!-- Google Analytics -->
+ 
+<!-- Google Analytics END -->
+    
+</head>
+<body>
+<!-- Main container -->
+<div class="page-container">
+    
+<!-- bloc-0 -->
+<div class="bloc bgc-rich-electric-blue d-bloc" id="bloc-0">
+	<div class="container bloc-sm">
+		<nav class="navbar nav-center row">
+			<div class="navbar-header">
+				<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="90.000000pt" height="90.000000pt" viewBox="0 0 500.000000 500.000000" preserveAspectRatio="xMidYMid meet">
+                    <metadata>
+                    Logo created by <a href="http://www.coffee-time.fr/">Mr Coffe-Time</a>
+                    </metadata>
+                    <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                        <path d="M530 2930 l0 -2000 1990 0 1990 0 0 1290 0 1290 -270 0 -270 0 -2 -1017 -3 -1018 -174 -3 -175 -2 -64 62 c-35 35 -411 413 -835 841 l-771 778 615 615 614 614 397 0 398 0 0 -235 0 -235 270 0 270 0 0 510 0 510 -1990 0 -1990 0 0 -2000z m1200 805 c-355 -355 -648 -645 -652 -645 -5 0 -8 290 -8 645 l0 645 652 0 653 0 -645 -645z m474 -1625 l641 -640 -885 3 -885 2 -3 405 -3 405 237 233 c130 127 241 232 246 232 6 0 299 -288 652 -640z"/>
+                        <path d="M520 395 c0 -308 0 -315 20 -315 19 0 20 7 20 150 l0 150 38 0 c37 0 44 -6 173 -150 122 -136 137 -150 167 -150 l33 0 -108 121 c-59 67 -125 141 -146 165 l-37 42 131 151 c130 150 130 151 97 150 -30 0 -45 -14 -156 -145 -116 -136 -126 -145 -155 -142 l-32 3 -3 143 c-2 134 -4 142 -22 142 -19 0 -20 -8 -20 -315z"/>
+                        <path d="M1349 551 c-66 -22 -99 -63 -99 -124 0 -63 46 -98 173 -131 69 -19 117 -57 117 -95 0 -44 -66 -91 -127 -91 -48 1 -108 34 -122 69 -17 40 -51 43 -51 5 0 -37 56 -89 111 -104 127 -34 247 35 235 135 -8 63 -63 102 -192 135 -65 16 -96 45 -92 88 4 50 43 77 113 77 46 0 58 -4 84 -29 17 -16 33 -38 37 -48 8 -25 44 -24 44 2 0 34 -22 70 -57 91 -37 23 -132 34 -174 20z"/>
+                        <path d="M1785 541 c-22 -10 -46 -25 -53 -33 -22 -27 -31 -75 -21 -112 12 -43 51 -69 140 -91 123 -31 167 -77 131 -139 -37 -63 -157 -72 -214 -16 -15 16 -28 36 -28 44 0 10 -9 16 -25 16 -47 0 -20 -73 42 -111 50 -31 173 -34 219 -5 48 30 64 57 64 107 0 78 -32 104 -186 148 -76 22 -89 31 -99 72 -5 21 0 34 22 59 55 61 169 46 203 -27 10 -22 22 -33 38 -33 28 0 29 24 2 68 -40 65 -153 91 -235 53z"/>
+                        <path d="M2270 544 c-46 -20 -77 -50 -103 -99 -31 -59 -31 -203 0 -261 43 -81 123 -122 211 -110 80 11 141 51 115 77 -7 7 -22 3 -45 -10 -117 -69 -240 -4 -256 135 l-5 44 168 0 168 0 -6 59 c-3 35 -15 77 -28 100 -40 71 -138 100 -219 65z m129 -42 c38 -19 71 -72 71 -114 l0 -28 -136 0 -137 0 6 35 c8 46 38 88 79 108 43 21 75 21 117 -1z"/>
+                        <path d="M2753 541 c-23 -11 -48 -29 -55 -40 -19 -30 -28 -26 -28 14 0 28 -4 35 -20 35 -19 0 -20 -7 -20 -235 l0 -235 25 0 25 0 0 171 c0 155 2 175 20 205 41 65 150 82 199 30 34 -36 41 -79 41 -248 l0 -158 26 0 26 0 -4 183 c-5 198 -14 239 -65 272 -40 26 -121 29 -170 6z"/>
+                        <path d="M3960 549 c-14 -6 -40 -24 -57 -42 l-33 -31 0 37 c0 30 -4 37 -20 37 -19 0 -20 -7 -20 -235 0 -228 1 -235 20 -235 19 0 20 7 20 163 0 179 8 211 63 251 38 28 106 28 144 0 43 -32 52 -72 52 -251 l1 -163 25 0 25 0 0 160 c0 174 7 206 54 249 20 19 38 25 76 25 43 1 54 -3 82 -32 l33 -32 3 -185 3 -185 25 0 26 0 -4 188 c-3 165 -5 191 -23 221 -54 91 -191 95 -261 8 l-28 -35 -16 31 c-31 57 -121 83 -190 56z"/>
+                        <path d="M1060 315 l0 -235 25 0 25 0 0 235 0 235 -25 0 -25 0 0 -235z"/>
+                        <path d="M3130 315 l0 -235 25 0 25 0 0 235 0 235 -25 0 -25 0 0 -235z"/>
+                        <path d="M3332 363 c3 -175 5 -191 26 -224 50 -81 179 -90 252 -18 l30 31 0 -36 c0 -32 3 -36 25 -36 l25 0 0 235 0 235 -25 0 -25 0 0 -167 c0 -149 -2 -172 -20 -200 -28 -46 -64 -66 -121 -67 -42 -1 -53 3 -81 32 l-33 32 -3 185 -3 185 -25 0 -26 0 4 -187z"/>
+                    </g>
+                </svg>
+			</div>
+		</nav>
+	</div>
+</div>
+<!-- bloc-0 END -->
+
+<!-- bloc-1 -->
+<div class="bloc tc-islamic-green bgc-white l-bloc" id="bloc-1">
+	<div class="container bloc-sm">
+		<div class="row animated zoomIn">
+			<div class="col-sm-4">
+				<p class="text-center">
+					{{headers.start_time}}
+				</p>
+				<h3 class="mg-md text-center tc-black">
+					Start Time
+				</h3>
+			</div>
+			<div class="col-sm-4">
+				<p class="text-center">
+					{{headers.duration}}
+				</p>
+				<h3 class="mg-md text-center tc-black">
+					Duration
+				</h3>
+			</div>
+			<div class="col-sm-4">
+				<p class="text-center">
+					{{headers.status}}
+				</p>
+				<h3 class="mg-md text-center tc-black">
+					Status
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-1 END -->
+
+<!-- bloc-2 -->
+<div class="bloc bgc-white l-bloc" id="bloc-2">
+	<div class="container bloc-lg">
+		<div class="row animated pulse">
+			<div class="col-sm-12">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>{{testcase_name}}</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for eachTestCase, status, errorType, errorMessage in tests_results %}
+                            <tr class='{{status}}'>
+                                <td class="col-xs-9">{{eachTestCase}}</td>
+                                <td class="col-xs-3 text-right">
+                                    <span class="label label-{{status}}">
+                                        {% if "success" == status %}
+                                            Pass
+                                        {% elif "info" == status %}
+                                            Skip
+                                        {% elif "danger" == status%}
+                                            Fail
+                                        {% else %}
+                                            Error
+                                        {% endif %}
+                                    </span>
+                                    {% if "success" not in status %}
+                                        &nbsp<button class="btn btn-default btn-xs">View</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% if "success" != status %}
+                                <tr style="display:none;">
+                                    <td class="col-xs-9">
+                                        <p>{{errorType}}</p>
+                                        <p>{{errorMessage}}</p>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        <tr>
+                            <td>
+                               Total Test Runned: {{total_test}}
+                            </td>
+                            <td>
+                                <span>{{headers.status}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+		</div>
+	</div>
+</div>
+<!-- bloc-2 END -->
+
+<!-- ScrollToTop Button -->
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1')"><span class="fa fa-chevron-up"></span></a>
+<!-- ScrollToTop Button END-->
+
+
+<!-- Footer - bloc-4 -->
+<div class="bloc bgc-rich-electric-blue d-bloc" id="bloc-4">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="divider-h animated vanishIn">
+					<span class="divider divider-half"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - bloc-4 END -->
+
+<!-- Footer - bloc-5 -->
+<div class="bloc bgc-rich-electric-blue d-bloc" id="bloc-5">
+	<div class="container bloc-md">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row animated pulse ">
+					<div class="col-sm-4">
+						<div class="panel">
+							<div class="panel-heading">
+								<h3 class="mg-clear text-center tc-ferrari-red">
+									Documentation
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									You can read the documentation on the kissenium page from github (www.kissenium.org). <br>You can also complete and create new information to this documentation, as I may not have enought time to do it myself.
+								</p>
+								<div class="text-center">
+									<a href="http://www.kissenium.org/documentation.html" class="btn btn-lg btn-medium-electric-blue"><span class="fa fa-book icon-spacer"></span>Go to documentation</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel">
+							<div class="panel-heading">
+								<h3 class="mg-clear text-center tc-ferrari-red">
+									Contribute to kissenium!
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									Kissenium is an open source project licenced under the apache licence 2.0, that mean that you can do what you need to do with the source code while you respect the original licence. <br>If you create interresting functionnalities or correct some default, think about the others and make a pull request ;) . <br>
+								</p>
+								<div class="text-center">
+									<a href="https://github.com/AdiuvoDotFr/Kissenium" class="btn btn-lg btn-medium-electric-blue"><span class="fa fa-github icon-spacer"></span>Go to github</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel">
+							<div class="panel-heading">
+								<h3 class="mg-clear text-center tc-ferrari-red">
+									Found a bug?
+								</h3>
+							</div>
+							<div class="panel-body">
+								<p>
+									If you found a bug, or need a new functionnality, you can create an issue in the Kissenium github projet. <br>I will try to answer it as quickly as possible.
+								</p>
+								<div class="text-center">
+									<a href="https://github.com/AdiuvoDotFr/Kissenium/issues" class="btn btn-lg btn-medium-electric-blue"><span class="fa fa-exclamation icon-spacer"></span>Create an issue</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - bloc-5 END -->
+
+<!-- Footer - bloc-6 -->
+<div class="bloc bgc-rich-electric-blue d-bloc" id="bloc-6">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="text-center">
+					<a href="https://github.com/AdiuvoDotFr/Kissenium/blob/master/LICENSE" class="a-block ltc-white">Kissenium - Apache 2.0</a>
+					&nbsp;|&nbsp;<a href="https://www.adiuvo.fr" class="a-block ltc-white">Created by Adiuvo</a>
+					&nbsp;|&nbsp;<a href="http://www.coffee-time.fr/" class="a-block ltc-white">Logo by Mr CoffeeTime</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer - bloc-6 END -->
+
+</div>
+<!-- Main container END -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+function setUpSpecialNavs(){function t(){var t="fadeInRight",e=0,i=60;$(".blocsapp-special-menu blocsnav").hasClass("fullscreen-nav")?(t="fadeIn",i=100):$(".blocsapp-special-menu").hasClass("nav-invert")&&(t="fadeInLeft"),$(".blocsapp-special-menu blocsnav li").each(function(){$(this).parent().hasClass("dropdown-menu")?$(this).addClass("animated fadeIn"):(e+=i,$(this).attr("style","animation-delay:"+e+"ms").addClass("animated "+t))})}$(".navbar-toggle").click(function(e){var i=$(this).closest("nav"),a=i.find("ul.site-navigation"),o=a.clone();if(a.parent().hasClass("nav-special"))if(e.stopPropagation(),$(this).hasClass("selected-nav"))$(".blocsapp-special-menu blocsnav").removeClass("open"),$(".selected-nav").removeClass("selected-nav"),setTimeout(function(){$(".blocsapp-special-menu").remove(),$("body").removeClass("lock-scroll"),$(".selected-nav").removeClass("selected-nav")},300);else{$(this).addClass("selected-nav");var l=i.attr("class").replace("navbar","").replace("row",""),n=a.parent().attr("class").replace("navbar-collapse","").replace("collapse","");($(".content-tint").length=-1)&&$("body").append('<div class="content-tint"></div>'),o.insertBefore(".page-container").wrap('<div class="blocsapp-special-menu '+l+'"><blocsnav class="'+n+'">'),$("blocsnav").prepend('<a class="close-special-menu animated fadeIn" style="animation-delay:0.5s;"><div class="close-icon"></div></a>'),t(),setTimeout(function(){$(".blocsapp-special-menu blocsnav").addClass("open"),$(".content-tint").addClass("on"),$("body").addClass("lock-scroll")},10)}}),$("body").on("mousedown touchstart",".content-tint, .close-special-menu",function(t){$(".content-tint").removeClass("on"),$(".selected-nav").click(),setTimeout(function(){$(".content-tint").remove()},10)}).on("click",".blocsapp-special-menu a",function(t){$(t.target).closest(".dropdown-toggle").length||$(".close-special-menu").mousedown()})}function extraNavFuncs(){$(".site-navigation a").click(function(t){$(t.target).closest(".dropdown-toggle").length||$(".navbar-collapse").collapse("hide")}),$("a.dropdown-toggle").click(function(t){$(this).parent().addClass("target-open-menu"),$(this).closest(".dropdown-menu").find(".dropdown.open").each(function(t){$(this).hasClass("target-open-menu")||$(this).removeClass("open")}),$(".target-open-menu").removeClass("target-open-menu")})}function setFillScreenBlocHeight(){$(".bloc-fill-screen").each(function(t){var e=$(this);window.fillBodyHeight=0,$(this).find(".container").each(function(t){fillPadding=2*parseInt($(this).css("padding-top")),e.hasClass("bloc-group")?fillBodyHeight=fillPadding+$(this).outerHeight()+50:fillBodyHeight=fillBodyHeight+fillPadding+$(this).outerHeight()+50}),$(this).css("height",getFillHeight()+"px")})}function getFillHeight(){var t=$(window).height();return t<fillBodyHeight&&(t=fillBodyHeight+100),t}function scrollToTarget(t){1==t?t=0:2==t?t=$(document).height():(t=$(t).offset().top,$(".sticky-nav").length&&(t-=$(".sticky-nav").height())),$("html,body").animate({scrollTop:t},"slow"),$(".navbar-collapse").collapse("hide")}function animateWhenVisible(){hideAll(),inViewCheck(),$(window).scroll(function(){inViewCheck(),scrollToTopView(),stickyNavToggle()})}function setUpDropdownSubs(){$("ul.dropdown-menu [data-toggle=dropdown]").on("click",function(t){t.preventDefault(),t.stopPropagation(),$(this).parent().siblings().removeClass("open"),$(this).parent().toggleClass("open");var e=$(this).parent().children(".dropdown-menu");e.offset().left+e.width()>$(window).width()&&e.addClass("dropmenu-flow-right")})}function stickyNavToggle(){var t=0,e="sticky";if($(".sticky-nav").hasClass("fill-bloc-top-edge")){var i=$(".fill-bloc-top-edge.sticky-nav").parent().css("background-color");"rgba(0, 0, 0, 0)"==i&&(i="#FFFFFF"),$(".sticky-nav").css("background",i),t=$(".sticky-nav").height(),e="sticky animated fadeInDown"}$(window).scrollTop()>t?($(".sticky-nav").addClass(e),"sticky"==e&&$(".page-container").css("padding-top",$(".sticky-nav").height())):($(".sticky-nav").removeClass(e).removeAttr("style"),$(".page-container").removeAttr("style"))}function hideAll(){$(".animated").each(function(t){$(this).closest(".hero").length||$(this).removeClass("animated").addClass("hideMe")})}function inViewCheck(){$($(".hideMe").get().reverse()).each(function(t){var e=jQuery(this),i=e.offset().top+e.height(),a=$(window).scrollTop()+$(window).height();if(e.height()>$(window).height()&&(i=e.offset().top),i<a){var o=e.attr("class").replace("hideMe","animated");e.css("visibility","hidden").removeAttr("class"),setTimeout(function(){e.attr("class",o).css("visibility","visible")},.01)}})}function scrollToTopView(){$(window).scrollTop()>$(window).height()/3?$(".scrollToTop").hasClass("showScrollTop")||$(".scrollToTop").addClass("showScrollTop"):$(".scrollToTop").removeClass("showScrollTop")}function setUpVisibilityToggle(){$(document).on("click","[data-toggle-visibility]",function(t){function e(t){t.is("img")?t.toggle():t.slideToggle()}t.preventDefault();var i=$(this).attr("data-toggle-visibility");if(-1!=i.indexOf(",")){var a=i.split(",");$.each(a,function(t){e($("#"+a[t]))})}else e($("#"+i))})}function setUpLightBox(){window.targetLightbox,$(document).on("click","[data-lightbox]",function(t){t.preventDefault(),targetLightbox=$(this);var e=targetLightbox.attr("data-lightbox"),i=targetLightbox.attr("data-autoplay"),a='<p class="lightbox-caption">'+targetLightbox.attr("data-caption")+"</p>",o="no-gallery-set",l=targetLightbox.attr("data-frame");targetLightbox.attr("data-gallery-id")&&(o=targetLightbox.attr("data-gallery-id")),targetLightbox.attr("data-caption")||(a="");var n="";1==i&&(n="autoplay");var s=$('<div id="lightbox-modal" class="modal fade"><div class="modal-dialog"><div class="modal-content '+l+' blocs-lb-container"><button id="blocs-lightbox-close-btn" type="button" class="close close-lightbox" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="modal-body"><a href="#" class="prev-lightbox" aria-label="prev"><span class="fa fa-chevron-left"></span></a><a href="#" class="next-lightbox" aria-label="next"><span class="fa fa-chevron-right"></span></a><img id="lightbox-image" class="img-responsive" src="'+e+'"><div id="lightbox-video-container" class="embed-responsive embed-responsive-16by9"><video controls '+n+' class="embed-responsive-item"><source id="lightbox-video" src="'+e+'" type="video/mp4"></video></div>'+a+"</div></div></div></div>");$("body").append(s),"fullscreen-lb"==l&&($("#lightbox-modal").addClass("fullscreen-modal").append('<a class="close-full-screen-modal animated fadeIn" style="animation-delay:0.5s;" onclick="$(\'#lightbox-modal\').modal(\'hide\');"><div class="close-icon"></div></a>'),$("#blocs-lightbox-close-btn").remove()),".mp4"==e.substring(e.length-4)?($("#lightbox-image, .lightbox-caption").hide(),$("#lightbox-video-container").show()):($("#lightbox-image,.lightbox-caption").show(),$("#lightbox-video-container").hide()),$("#lightbox-modal").modal("show"),"no-gallery-set"==o?(0==$("a[data-lightbox]").index(targetLightbox)&&$(".prev-lightbox").hide(),$("a[data-lightbox]").index(targetLightbox)==$("a[data-lightbox]").length-1&&$(".next-lightbox").hide()):(0==$('a[data-gallery-id="'+o+'"]').index(targetLightbox)&&$(".prev-lightbox").hide(),$('a[data-gallery-id="'+o+'"]').index(targetLightbox)==$('a[data-gallery-id="'+o+'"]').length-1&&$(".next-lightbox").hide()),addLightBoxSwipeSupport()}).on("hidden.bs.modal","#lightbox-modal",function(){$("#lightbox-modal").remove()}),$(document).on("click",".next-lightbox, .prev-lightbox",function(t){t.preventDefault();var e="no-gallery-set",i=$("a[data-lightbox]").index(targetLightbox),a=$("a[data-lightbox]").eq(i+1);targetLightbox.attr("data-gallery-id")&&(e=targetLightbox.attr("data-gallery-id"),i=$('a[data-gallery-id="'+e+'"]').index(targetLightbox),a=$('a[data-gallery-id="'+e+'"]').eq(i+1)),$(this).hasClass("prev-lightbox")&&(a=$('a[data-gallery-id="'+e+'"]').eq(i-1),"no-gallery-set"==e&&(a=$("a[data-lightbox]").eq(i-1)));var o=a.attr("data-lightbox");if(".mp4"==o.substring(o.length-4)){var l="";1==a.attr("data-autoplay")&&(l="autoplay"),$("#lightbox-image, .lightbox-caption").hide(),$("#lightbox-video-container").show().html("<video controls "+l+' class="embed-responsive-item"><source id="lightbox-video" src="'+o+'" type="video/mp4"></video>')}else $("#lightbox-image").attr("src",o).show(),$(".lightbox-caption").html(a.attr("data-caption")).show(),$("#lightbox-video-container").hide();targetLightbox=a,$(".next-lightbox, .prev-lightbox").hide(),"no-gallery-set"==e?($("a[data-lightbox]").index(a)!=$("a[data-lightbox]").length-1&&$(".next-lightbox").show(),$("a[data-lightbox]").index(a)>0&&$(".prev-lightbox").show()):($('a[data-gallery-id="'+e+'"]').index(a)!=$('a[data-gallery-id="'+e+'"]').length-1&&$(".next-lightbox").show(),$('a[data-gallery-id="'+e+'"]').index(a)>0&&$(".prev-lightbox").show())})}function addSwipeSupport(){$(".carousel-inner").length&&$(".carousel-inner").swipe({swipeLeft:function(t,e,i,a,o){$(this).parent().carousel("next")},swipeRight:function(){$(this).parent().carousel("prev")},threshold:0})}function addKeyBoardSupport(){$(window).keydown(function(t){37==t.which?$(".prev-lightbox").is(":visible")&&$(".prev-lightbox").click():39==t.which&&$(".next-lightbox").is(":visible")&&$(".next-lightbox").click()})}function addLightBoxSwipeSupport(){$("#lightbox-image").length&&$("#lightbox-image").swipe({swipeLeft:function(t,e,i,a,o){$(".next-lightbox").is(":visible")&&$(".next-lightbox").click()},swipeRight:function(){$(".prev-lightbox").is(":visible")&&$(".prev-lightbox").click()},threshold:0})}$(document).ready(function(){$("body").append('<div id="page-loading-blocs-notifaction"></div>'),$(".bloc-fill-screen").css("height",$(window).height()+"px"),$("#scroll-hero").click(function(t){t.preventDefault(),$("html,body").animate({scrollTop:$("#scroll-hero").closest(".bloc").height()},"slow")}),extraNavFuncs(),setUpSpecialNavs(),setUpDropdownSubs(),setUpLightBox(),setUpVisibilityToggle(),addSwipeSupport(),addKeyBoardSupport()}),$(window).load(function(){setFillScreenBlocHeight(),animateWhenVisible(),$("#page-loading-blocs-notifaction").remove()}).resize(function(){setFillScreenBlocHeight()}),$(function(){$('[data-toggle="tooltip"]').tooltip()});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js" defer></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

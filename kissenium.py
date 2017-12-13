@@ -53,7 +53,7 @@ class Runner:
             self.suites.append(suite)
 
         suite = TestSuite(self.suites)
-        test_runner = HTMLTestRunner(output='html', template='resources/html/report-template.html', report_title='Test report')
+        test_runner = HTMLTestRunner(output='html', template='resources/html/kissenium-template.html', report_title='Test report')
         results = test_runner.run(suite)
         self.logger.info("All tests have been executed. Kissenium will stop now.")
         sys.exit(not results.wasSuccessful())
