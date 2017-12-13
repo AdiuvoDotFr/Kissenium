@@ -1,7 +1,6 @@
 # coding: utf-8
 import mss
 import os
-import sys
 import time
 import glob
 import threading
