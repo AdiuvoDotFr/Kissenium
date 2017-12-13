@@ -23,6 +23,7 @@ class BaseTest(unittest.TestCase):
         self.get_config()
         self.get_capture_handler()
         self.browser = Platform.get_webdriver(self.config.get_browser())
+        self.browser.switch_to_window(self.browser.current_window_handle)
         self.actionChains = ActionChains(self.browser)
         self.st = SeleniumToolBox(self.logger, self.screenshot)
         self.js = JsTools(self.config.get_message_status(), self.config.get_dim_status(), self.logger, self.config.get_page_wait())
