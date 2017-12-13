@@ -27,5 +27,3 @@ class GenericTest(BaseTest):
 
         if self.config.get_record_scenarios() == 'True':
             self.recorder.stop()
-            self.recorder.generate_video()
-            self.recorder.clean_captures()
