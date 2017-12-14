@@ -106,5 +106,5 @@ ENV/
 .mypy_cache/
 
 # Kissenium
-reports/
+/reports
 resources/inject/node_modules

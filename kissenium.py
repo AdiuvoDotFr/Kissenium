@@ -19,16 +19,20 @@ limitations under the License.
 
 import glob
 import sys
+import datetime
 from unittest import TestLoader, TestSuite
 from HtmlTestRunner import HTMLTestRunner
-from utils.log import Log4Kissenium
-from utils.sm_tools import SmallTools
+from base.log import Log4Kissenium
+from base.sm_tools import SmallTools
+from base.reports.html import HtmlRender
 import scenarios
+import dicttoxml
 
 
 class Runner:
 
     def __init__(self):
+        self.start = datetime.datetime.now()
         self.prepare_for_run()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
@@ -55,10 +59,11 @@ class Runner:
         suite = TestSuite(self.suites)
         test_runner = HTMLTestRunner(output='html', template='resources/html/kissenium-template.html', report_title='Test report')
         results = test_runner.run(suite)
+        HtmlRender(results, self.start).create_index()
         self.logger.info("All tests have been executed. Kissenium will stop now.")
         sys.exit(not results.wasSuccessful())
-        # xml = dicttoxml(results., custom_root='test', attr_type=False)
-        # SmallTools.create_file('Xml', 'Kissenium.xml', xml)
+        #xml = dicttoxml(results, custom_root='test', attr_type=False)
+        #SmallTools.create_file('Xml', 'Kissenium.xml', xml)
 
 
 if __name__ == '__main__':

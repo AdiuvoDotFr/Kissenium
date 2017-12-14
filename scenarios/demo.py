@@ -1,7 +1,7 @@
 # coding: utf-8
 import unittest
 import time
-from utils.generics.test import GenericTest
+from base.generics.test import GenericTest
 
 
 class TestDemo(GenericTest):
@@ -15,7 +15,7 @@ class TestDemo(GenericTest):
                 going wrong when it fails)
         ---
         If you want to take a capture instead of the video, change the import to
-            from utils.generic_test_capture import GenericTestCapture
+            from base.generic_test_capture import GenericTestCapture
         and the extend of the class to
             class SeleniumPoc(GenericTestCapture):
         ---

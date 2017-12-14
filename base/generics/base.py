@@ -1,12 +1,14 @@
 # coding: utf-8
 import unittest
-from utils.platform import Platform
-from utils.log import Log4Kissenium
-from utils.config import Config
-from utils.screen_capture import ScreenCapture
+
 from selenium.webdriver.common.action_chains import ActionChains
-from utils.selenium_toolbox import SeleniumToolBox
-from utils.js_tools import JsTools
+
+from base.capture.screenshot import Screenshot
+from base.config import Config
+from base.js_tools import JsTools
+from base.log import Log4Kissenium
+from base.platform import Platform
+from base.selenium_toolbox import SeleniumToolBox
 
 
 class BaseTest(unittest.TestCase):
@@ -56,7 +58,7 @@ class BaseTest(unittest.TestCase):
         Get capture handler
         :return: Nothing
         """
-        self.screenshot = ScreenCapture(self.__class__.__name__, self._testMethodName)
+        self.screenshot = Screenshot(self.__class__.__name__, self._testMethodName)
 
     def take_capture(self, suffix=''):
         """

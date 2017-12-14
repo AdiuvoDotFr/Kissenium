@@ -8,13 +8,13 @@ import shlex
 import subprocess
 import traceback
 from PIL import Image
-from utils.sm_tools import SmallTools
-from utils.config import Config
-from utils.log import Log4Kissenium
-from utils.platform import Platform
+from base.sm_tools import SmallTools
+from base.config import Config
+from base.log import Log4Kissenium
+from base.platform import Platform
 
 
-class ScreenRecorder(threading.Thread):
+class Record(threading.Thread):
     stop_recording = False
     scenario = ""
 

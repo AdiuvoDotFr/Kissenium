@@ -1,8 +1,8 @@
 # coding: utf-8
 import logging
-from utils.sm_tools import SmallTools
+from base.sm_tools import SmallTools
 from logging.handlers import RotatingFileHandler
-from utils.config import Config
+from base.config import Config
 
 
 class Log4Kissenium:

@@ -1,6 +1,6 @@
 # coding: utf-8
-from utils.generics import BaseTest
-from utils.screen_recorder import ScreenRecorder
+from base.capture.record import Record
+from base.generics import BaseTest
 
 
 class GenericTest(BaseTest):
@@ -16,7 +16,7 @@ class GenericTest(BaseTest):
     def setUp(self):
         self.self_setup()
         if self.config.get_record_scenarios() == 'True':
-            self.recorder = ScreenRecorder(self.__class__.__name__, self._testMethodName, self.browser)
+            self.recorder = Record(self.__class__.__name__, self._testMethodName, self.browser)
             self.recorder.start()
 
     def tearDown(self):

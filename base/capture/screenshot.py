@@ -1,12 +1,12 @@
 # coding: utf-8
 import mss
-from utils.sm_tools import SmallTools
-from utils.config import Config
+from base.sm_tools import SmallTools
+from base.config import Config
 from PIL import Image
-from utils.log import Log4Kissenium
+from base.log import Log4Kissenium
 
 
-class ScreenCapture:
+class Screenshot:
     scenario = ""
 
     def __init__(self, scenario, test):

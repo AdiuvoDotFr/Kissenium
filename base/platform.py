@@ -1,6 +1,6 @@
 # coding: utf-8
 import os
-from utils.log import Log4Kissenium
+from base.log import Log4Kissenium
 from sys import platform
 import struct
 from selenium import webdriver
