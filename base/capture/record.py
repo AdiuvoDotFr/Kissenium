@@ -55,7 +55,7 @@ class Record(threading.Thread):
                     th.start()
                     i += 1
                 self.generate_video()
-                self.clean_captures()
+                self.clean_tmp()
 
     def stop(self):
         self.stop_recording = True
