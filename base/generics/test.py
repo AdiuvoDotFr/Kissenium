@@ -1,4 +1,5 @@
 # coding: utf-8
+
 from base.capture.record import Record
 from base.generics import BaseTest
 

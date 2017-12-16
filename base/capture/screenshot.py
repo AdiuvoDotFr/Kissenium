@@ -1,4 +1,5 @@
 # coding: utf-8
+
 import mss
 from base.sm_tools import SmallTools
 from base.config import Config

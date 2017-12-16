@@ -1,4 +1,5 @@
 # coding: utf-8
+
 import mss
 import os
 import time
@@ -18,12 +19,13 @@ class Record(threading.Thread):
     stop_recording = False
     scenario = ""
 
-    def __init__(self, scenario, test, browser):
+    def __init__(self, scenario, test):
+        # Note: if we wan't to record distant execution of kissenium (not implemented for now), we could think of using
+        # vnc server on the remote executor
         threading.Thread.__init__(self)
         self.scenario = scenario
         self.reports_folder = SmallTools.get_reports_folder(self.scenario)
         self.test = test
-        self.browser = browser
         self.cancelled = False
         self.config = Config()
         self.logger = Log4Kissenium.get_logger("Kissenium")

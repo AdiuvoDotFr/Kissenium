@@ -1,15 +1,13 @@
+# coding: utf-8
+
 import configparser
 
 
 class Config:
 
-    def __init__(self):
-        self.config = None
-        self.generate_configuration()
-
-    def generate_configuration(self):
+    def __init__(self, config_file='kissenium.ini'):
         self.config = configparser.ConfigParser()
-        self.config.read('kissenium.ini')
+        self.config.read(config_file)
 
     def get_config(self):
         return self.config

@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 import re
 import shutil
@@ -64,3 +66,10 @@ class SmallTools:
     @staticmethod
     def sanitize_filename(filename):
         return re.sub('[^A-Za-z0-9.]+', '_', filename)
+
+    @staticmethod
+    def get_lines_from_file(path, filename):
+        with open(path + filename, 'r') as f:
+            lines = f.readlines()
+            f.close()
+        return lines
