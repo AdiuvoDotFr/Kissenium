@@ -1,6 +1,6 @@
-dicttoxml==1.7.4
 html-testRunner==1.1.1
 Jinja2==2.9.5
+lxml==4.1.1
 MarkupSafe==1.0
 mss==3.0.1
 numpy==1.13.1

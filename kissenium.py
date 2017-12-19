@@ -25,6 +25,7 @@ from HtmlTestRunner import HTMLTestRunner
 from base.log import Log4Kissenium
 from base.sm_tools import SmallTools
 from base.reports.html import HtmlRender
+from base.reports.junit import JunitResults
 import scenarios
 
 
@@ -35,7 +36,7 @@ class Runner:
         self.prepare_for_run()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
-        self.test_classes_to_run = [scenarios.TestDemo]
+        self.test_classes_to_run = [scenarios.TestDemo, scenarios.Test2]
         self.loader = TestLoader()
         self.suites = []
 
@@ -59,6 +60,7 @@ class Runner:
         test_runner = HTMLTestRunner(output='html', template='resources/html/kissenium-template.html', report_title='Test report')
         results = test_runner.run(suite)
         HtmlRender(results, self.start).create_index()
+        JunitResults(results, self.start).generate()
         self.logger.info("All tests have been executed. Kissenium will stop now.")
         sys.exit(not results.wasSuccessful())
 
