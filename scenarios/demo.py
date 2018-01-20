@@ -9,17 +9,7 @@ class TestDemo(GenericTest):
 
     """
         This is a demo class who will show-up most of the functionalities of this small test environment.
-        Here you will learn how to :
-            * record a video or a capture of the end of your test
-            * run a test on a quite simple example (make a request on google, clic to visit a website, submit a form, ...)
-            * how to log some importants things about your tests (keep in mind that you will need to understand whats was
-                going wrong when it fails)
-        ---
-        If you want to take a capture instead of the video, change the import to
-            from base.generic_test_capture import GenericTestCapture
-        and the extend of the class to
-            class SeleniumPoc(GenericTestCapture):
-        ---
+        PLease check the kissenium.ini file for more configuration
         If you need to run your tests in a specific order, you can add an order number after the method keyword 'test'
         Like this:
             def test_4_test_name(self):
