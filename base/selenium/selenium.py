@@ -247,12 +247,25 @@ class Selenium():
         self.logger.info("[close_tab] Success")
 
     @exception()
-    def hover_by_xpath(self, xpath):
+    def scroll_to(self, xpath):
         """
         Hover one element with xpath
-        :param xpath:
+        :param xpath: xpath element to find
         :return:
         """
-        element_to_hover_over = self.browser.find_element_by_xpath(xpath)
-        ActionChains(self.browser).move_to_element(element_to_hover_over).perform()
+        self.page_wait_for_xpath(xpath)
+        element_to_hover = self.browser.find_element_by_xpath(xpath)
+        self.browser.execute_script("arguments[0].scrollIntoView();", element_to_hover)
         self.logger.info("[hover_by_xpath] Success")
+
+    @exception()
+    def move_cursor_to(self, xpath):
+        """
+        Hover one element with xpath
+        :param xpath: xpath element to find
+        :return:
+        """
+        self.page_wait_for_xpath(xpath)
+        element_to_hover = self.browser.find_element_by_xpath(xpath)
+        ActionChains(self.browser).move_to_element(element_to_hover).perform()
+        self.logger.info("[move_cursor_to] Success")

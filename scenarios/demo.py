@@ -124,13 +124,13 @@ class TestDemo(GenericTest):
         self.selenium.get('http://www.kissenium.org')
         self.selenium.alert("Here we show the documentation mode.", 20, 2)
         self.selenium.alert("This mode is experimental, and work only with elements who have id\\'s", 2, 2)
-        self.selenium.hover_by_xpath("//h2[@id='kissenium--selenium-framework']")
+        self.selenium.scroll_to("//h2[@id='kissenium--selenium-framework']")
         self.selenium.dim("kissenium--selenium-framework", 2)
         self.selenium.alert("Think about scrolling the element before dim the page arround it.", 4, 1)
         self.selenium.alert("Use \\'self.st.hover_by_xpath\\'", 3, 2)
-        self.selenium.hover_by_xpath("//h2[@id='functionalities-done-and-to-do']")
+        self.selenium.scroll_to("//h2[@id='functionalities-done-and-to-do']")
         self.selenium.dim("functionalities-done-and-to-do", 2)
-        self.selenium.hover_by_xpath("//h2[@id='authors-contributors']")
+        self.selenium.scroll_to("//h2[@id='authors-contributors']")
         self.selenium.dim("authors-contributors", 2)
 
     def test_6_assert_log(self):
