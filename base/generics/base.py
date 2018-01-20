@@ -5,11 +5,9 @@ import unittest
 from selenium.webdriver.common.action_chains import ActionChains
 
 from base.capture.screenshot import Screenshot
-from base.config import Config
-from base.js_tools import JsTools
-from base.log import Log4Kissenium
-from base.platform import Platform
-from base.selenium_toolbox import SeleniumToolBox
+from base.config.config import Config
+from base.logs.log import Log4Kissenium
+from base.selenium.selenium import Selenium
 
 
 class BaseTest(unittest.TestCase):
@@ -25,22 +23,10 @@ class BaseTest(unittest.TestCase):
         self.get_logger()
         self.get_config()
         self.get_capture_handler()
-        self.browser = Platform.get_webdriver(self.config.get_browser())
-        self.browser.switch_to_window(self.browser.current_window_handle)
-        self.actionChains = ActionChains(self.browser)
-        self.st = SeleniumToolBox(self.logger, self.screenshot)
-        self.js = JsTools(self.config.get_message_status(), self.config.get_dim_status(), self.logger, self.config.get_page_wait())
-
-        if self.config.get_browser_size() == "Maximize":
-            self.maximize()
-        else:
-            width, height = self.config.get_browser_size().split('*')
-            self.resize_window(width, height)
-
-
+        self.selenium = Selenium(self.logger, self.screenshot)
 
     def self_teardown(self):
-        self.browser.quit()
+        self.selenium.quit()
         self.logger.info("End of %s - %s Test" % (self.__class__.__name__, self._testMethodName))
 
     def get_config(self):
@@ -67,7 +53,7 @@ class BaseTest(unittest.TestCase):
         Configuration come from kissenium.ini (CaptureSize : Full | Browser)
         :return: Nothing
         """
-        self.screenshot.capture(self.browser, suffix)
+        self.screenshot.capture(self.selenium.browser, suffix)
 
     def take_assert_capture(self, suffix=''):
         """
@@ -211,22 +197,4 @@ class BaseTest(unittest.TestCase):
             self.logger.info("AssertNotIn : %s is not in %s" % (a, b))
         except AssertionError:
             self.assert_error_handler("AssertNotIn : %s IS in %s" % (a, b), stop_on_fail)
-
-    def maximize(self):
-        """
-        Maximize browser window
-        :return: Nothing
-        """
-        self.browser.maximize_window()
-        self.logger.info("Browser window has been maximized.")
-
-    def resize_window(self, width, height):
-        """
-        Resize browser window to width and height
-        :param width: Int
-        :param height: Int
-        :return: Nothing
-        """
-        self.browser.set_window_size(width, height)
-        self.logger.info("Browser window has been resized to : %s x %s." % (width, height))
 

@@ -1,11 +1,14 @@
 # coding: utf-8
 
-import os
 import glob
+import os
 import traceback
+
 from jinja2 import Environment, FileSystemLoader
-from base.log import Log4Kissenium
+
+from base.logs.log import Log4Kissenium
 from base.reports.results_parser import ResultsParser
+
 
 class HtmlRender:
     title = "Test results"

@@ -17,16 +17,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import datetime
 import glob
 import sys
-import datetime
 from unittest import TestLoader, TestSuite
+
 from HtmlTestRunner import HTMLTestRunner
-from base.log import Log4Kissenium
-from base.sm_tools import SmallTools
+
+import scenarios
+from base.logs.log import Log4Kissenium
 from base.reports.html import HtmlRender
 from base.reports.junit import JunitResults
-import scenarios
+from base.tools.sm_tools import SmallTools
 
 
 class Runner:
@@ -36,7 +38,7 @@ class Runner:
         self.prepare_for_run()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
-        self.test_classes_to_run = [scenarios.TestDemo, scenarios.Test2]
+        self.test_classes_to_run = [scenarios.TestDemo]
         self.loader = TestLoader()
         self.suites = []
 

@@ -1,8 +1,10 @@
 # coding: utf-8
 
-import traceback
 import datetime
-from base.log import Log4Kissenium
+import traceback
+
+from base.logs.log import Log4Kissenium
+
 
 class ResultsParser:
 

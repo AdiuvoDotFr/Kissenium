@@ -1,3 +1,3 @@
 # coding: utf-8
 
-from .demo import TestDemo
+from .demo_refactoring import TestDemo

@@ -1,18 +1,20 @@
 # coding: utf-8
 
-import mss
-import os
-import time
 import glob
-import threading
+import os
 import shlex
 import subprocess
+import threading
+import time
 import traceback
+
+import mss
 from PIL import Image
-from base.sm_tools import SmallTools
-from base.config import Config
-from base.log import Log4Kissenium
-from base.platform import Platform
+
+from base.config.config import Config
+from base.logs.log import Log4Kissenium
+from base.tools.platform import Platform
+from base.tools.sm_tools import SmallTools
 
 
 class Record(threading.Thread):
@@ -99,11 +101,11 @@ class Record(threading.Thread):
             i = 0
             while not self.stop_recording:
                 command = 'ffmpeg -loglevel panic -hide_banner -nostats -f avfoundation -i "1" -c:v libx264 -vf '\
-                          + '"format=yuv420p" -r 25 -t 1 reports/tmp/' \
+                          + '"format=yuv420p" -r 25 -t 2 reports/tmp/' \
                           + self.test + '-' + str("{0:0=4d}".format(i)) + '.avi'
                 arguments = shlex.split(command)
                 subprocess.Popen(arguments)
-                time.sleep(1)
+                time.sleep(2)
                 i += 1
         except Exception as e:
             self.logger.error(e)
