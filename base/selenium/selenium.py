@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from base.config.config import Config
 from selenium.webdriver.common.action_chains import ActionChains
-from base.reports.decorator import exception
+from base.reports.decorators import exception
 
 
 class Selenium():
