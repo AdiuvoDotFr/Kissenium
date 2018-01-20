@@ -35,15 +35,13 @@ class TestDemo(GenericTest):
         """ Testing the OTP form """
         self.selenium.alert("Testing the OTP form", 10, 1)
         """ Scroll to the form """
-        self.selenium.hover_by_xpath("//form[@id='otp_form']")
+        self.selenium.scroll_to_xpath("//form[@id='otp_form']")
 
         """ Fill the form """
-        challenge = self.selenium.get_element("ID", "challenge")
-        secret = self.selenium.get_element("ID", "secret")
         self.selenium.alert("Sending challenge input", 2, 2)
-        challenge.send_keys("1 selenium")
+        self.selenium.send_keys_by_id("challenge", "1 selenium")
         self.selenium.alert("Sending secret input", 2, 2)
-        secret.send_keys("selenium")
+        self.selenium.send_keys_by_id("secret", "selenium")
 
         """ Click on generate """
         self.selenium.alert("Click to generate", 2, 2)
@@ -64,9 +62,8 @@ class TestDemo(GenericTest):
         self.l_assertIn('Google', self.selenium.browser.title, False)
 
         """ We start by searching for selenium into google """
-        search_input = self.selenium.get_element_by_xpath("//input[@title='Rechercher']")
         self.selenium.alert("We are starting by searching for selenium in google", 2, 1)
-        search_input.send_keys("selenium software")
+        self.selenium.send_keys_by_xpath("//input[@title='Rechercher']", "selenium software")
         self.selenium.get_element_by_xpath("//input[@value='Recherche Google']").click()
 
         """ For the demo we will log every page name in the result of google """
@@ -124,13 +121,13 @@ class TestDemo(GenericTest):
         self.selenium.get('http://www.kissenium.org')
         self.selenium.alert("Here we show the documentation mode.", 20, 2)
         self.selenium.alert("This mode is experimental, and work only with elements who have id\\'s", 2, 2)
-        self.selenium.scroll_to("//h2[@id='kissenium--selenium-framework']")
+        self.selenium.scroll_to_xpath("//h2[@id='kissenium--selenium-framework']")
         self.selenium.dim("kissenium--selenium-framework", 2)
         self.selenium.alert("Think about scrolling the element before dim the page arround it.", 4, 1)
         self.selenium.alert("Use \\'self.st.hover_by_xpath\\'", 3, 2)
-        self.selenium.scroll_to("//h2[@id='functionalities-done-and-to-do']")
+        self.selenium.scroll_to_xpath("//h2[@id='functionalities-done-and-to-do']")
         self.selenium.dim("functionalities-done-and-to-do", 2)
-        self.selenium.scroll_to("//h2[@id='authors-contributors']")
+        self.selenium.scroll_to_xpath("//h2[@id='authors-contributors']")
         self.selenium.dim("authors-contributors", 2)
 
     def test_6_assert_log(self):
