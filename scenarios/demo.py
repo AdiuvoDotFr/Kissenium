@@ -78,7 +78,7 @@ class TestDemo(GenericTest):
         """ We start by searching for selenium into google """
         search_input = self.st.get_element_by_xpath(self.browser, "//input[@title='Rechercher']")
         self.js.message(self.browser, "We are starting by searching for selenium in google", 2, 1)
-        search_input.send_keys("selenium")
+        search_input.send_keys("selenium software")
         self.st.get_element_by_xpath(self.browser, "//input[@value='Recherche Google']").click()
 
         """ For the demo we will log every page name in the result of google """
