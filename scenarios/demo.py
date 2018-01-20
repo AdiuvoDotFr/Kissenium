@@ -30,7 +30,6 @@ class TestDemo(GenericTest):
     def test_1_skip(self):
         """ This test is skipped """
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_2_adiuvo_otp(self):
         """
         Run a test on a website, and do an assert on a OTP page
@@ -64,7 +63,6 @@ class TestDemo(GenericTest):
         self.l_assertEqual("VET GWEN GOOF TOO MANA CARL (43B2 3A3B 20DB 6EC7)", r)
         self.selenium.alert("Assert is ok", 2, 1)
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_3_from_google_search(self):
         """
         Run a test wich start from google
@@ -112,7 +110,6 @@ class TestDemo(GenericTest):
         self.l_assertEqual("https://github.com/mozilla/geckodriver/", r.get_attribute("href"))
         self.selenium.alert("End of the browsing test", 2, 2)
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_4_resize_demo(self):
         """
         This test show us a browser resize demo
@@ -129,7 +126,6 @@ class TestDemo(GenericTest):
         self.selenium.maximize()
         self.selenium.alert("Maximize the window", 2, 2)
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_5_documentation_mode(self):
         """
         This test show us a small "documentation mode" example
