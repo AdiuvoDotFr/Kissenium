@@ -107,6 +107,14 @@ ENV/
 
 # Kissenium
 /reports
+/tests/reports
 resources/inject/node_modules
 
-\.idea/
+# Old files
+*.old
+
+# Mac files
+.DS_Store
+
+#Idea files
+.idea/

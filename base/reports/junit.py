@@ -1,12 +1,13 @@
 # coding: utf-8
 
 import traceback
-import datetime
-from base.log import Log4Kissenium
-from base.reports.results_parser import ResultsParser
-from base.sm_tools import SmallTools
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
+
+from base.logs.log import Log4Kissenium
+from base.reports.results_parser import ResultsParser
+from base.tools.sm_tools import SmallTools
+
 
 class JunitResults:
 

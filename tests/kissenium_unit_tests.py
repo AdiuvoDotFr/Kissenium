@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-import os
+import configparser
 import glob
+import os
 import time
 import unittest
-import configparser
-import logging
-from base.log import Log4Kissenium
-from base.config import Config
-from base.sm_tools import SmallTools
-from base.capture.screenshot import Screenshot
+
 from base.capture.record import Record
+from base.capture.screenshot import Screenshot
+from base.config.config import Config
+from base.logs.log import Log4Kissenium
+from base.tools.sm_tools import SmallTools
 
 
 class KisseniumUnitTests(unittest.TestCase):
@@ -28,7 +28,7 @@ class KisseniumUnitTests(unittest.TestCase):
         config = Config()
         self.assertEqual("Chrome", config.get_browser())
 
-        #Test fallback value
+        # Test fallback value
         new_config = configparser.ConfigParser()
         new_config.read('kissenium.ini')
         config_ref = configparser.ConfigParser()

@@ -1,10 +1,10 @@
 # coding: utf-8
 
 import mss
-from base.sm_tools import SmallTools
-from base.config import Config
 from PIL import Image
-from base.log import Log4Kissenium
+
+from base.config.config import Config
+from base.tools.sm_tools import SmallTools
 
 
 class Screenshot:

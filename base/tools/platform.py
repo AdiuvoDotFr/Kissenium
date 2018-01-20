@@ -1,10 +1,12 @@
 # coding: utf-8
 
 import os
-from base.log import Log4Kissenium
-from sys import platform
 import struct
+from sys import platform
+
 from selenium import webdriver
+
+from base.logs.log import Log4Kissenium
 
 
 class Platform:
