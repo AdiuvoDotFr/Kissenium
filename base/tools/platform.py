@@ -40,7 +40,9 @@ class Platform:
             chromedriver = "%s/resources/webdriver/chrome/%s/%s/chromedriver" % (os.getcwd(), os_name, os_arch)
             os.environ["webdriver.chrome.driver"] = chromedriver
             return webdriver.Chrome(chromedriver)
-        else:
+        elif browser == "Firefox":
             geckodriver = "%s/resources/webdriver/firefox/%s/%s/geckodriver" % (os.getcwd(), os_name, os_arch)
             logger.debug(geckodriver)
             return webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log', executable_path=geckodriver)
+        else :
+            raise ValueError('Unrecognized browser specified in configuration')
