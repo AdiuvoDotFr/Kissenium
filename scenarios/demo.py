@@ -32,18 +32,18 @@ class TestDemo(GenericTest):
         self.selenium.alert("Page title has been tested", 2, 2)
         self.selenium.click_first_xpath("//a[contains(., 'Générateur de mots de passe')]")
 
-        """ Testing the OTP form """
+        # Testing the OTP form
         self.selenium.alert("Testing the OTP form", 10, 1)
-        """ Scroll to the form """
+        # Scroll to the form
         self.selenium.scroll_to_xpath("//form[@id='otp_form']")
 
-        """ Fill the form """
+        # Fill the form
         self.selenium.alert("Sending challenge input", 2, 2)
         self.selenium.send_keys_by_id("challenge", "1 selenium")
         self.selenium.alert("Sending secret input", 2, 2)
         self.selenium.send_keys_by_id("secret", "selenium")
 
-        """ Click on generate """
+        # Click on generate
         self.selenium.alert("Click to generate", 2, 2)
         self.selenium.get_element_by_xpath("//button[@type='submit' and contains(., 'Lancez le calcul!')]").click()
         r = self.selenium.get_element_by_xpath("//textarea[@placeholder = 'Les mots générés apparaîtrons ici.']")\
@@ -56,22 +56,22 @@ class TestDemo(GenericTest):
         Run a test wich start from google
         :return:
         """
-        """ Our first assert will be to check the google title """
+        # Our first assert will be to check the google title
         self.selenium.get('https://www.google.fr')
         self.selenium.alert("This test will go trough standard browsing on the web with some tests.", 5, 3)
         self.l_assertIn('Google', self.selenium.browser.title, False)
 
-        """ We start by searching for selenium into google """
+        # We start by searching for selenium into google
         self.selenium.alert("We are starting by searching for selenium in google", 2, 1)
         self.selenium.send_keys_by_xpath("//input[@title='Rechercher']", "selenium software")
         self.selenium.get_element_by_xpath("//input[@value='Recherche Google']").click()
 
-        """ For the demo we will log every page name in the result of google """
+        # For the demo we will log every page name in the result of google
         g_results = self.selenium.get_elements_by_xpath('//div[@id="res"]//h3//a')
         for gr in g_results:
             self.logger.info("Element iteration demo : " + gr.text)
 
-        """ We first go into wikipedia, run an assert, and then go back """
+        # We first go into wikipedia, run an assert, and then go back
         self.selenium.click_first_xpath("//a[contains(., 'Wikipédia')]")
         self.selenium.alert("Browsing wikipedia page", 2, 1)
         self.selenium.alert("Testing the page title", 2, 1)
@@ -81,11 +81,11 @@ class TestDemo(GenericTest):
         self.selenium.alert("Go to the previous page (self.browser.page)", 1, 1)
         self.selenium.browser.back()
 
-        """ We are going to the selenium official website """
+        # We are going to the selenium official website
         self.selenium.alert("Go to the selenium website", 2, 2)
         self.selenium.click_first_xpath("//a[contains(., 'Selenium - Web Browser Automation')]")
 
-        """ Clicking on some links for the demo """
+        # Clicking on some links for the demo
         self.selenium.alert("Click on link", 2, 2)
         self.selenium.click_first_xpath("//ul[@id='sitemap']//a[contains(., 'Selenium IDE')]")
         self.selenium.alert("Go to download page", 2, 2)
@@ -93,7 +93,7 @@ class TestDemo(GenericTest):
         self.selenium.page_wait_for_xpath("//h2")
         r = self.selenium.get_element_by_xpath("//a[contains(., 'Mozilla GeckoDriver')]")
 
-        """ Running an assert to check if the value is equal to what we expect """
+        # Running an assert to check if the value is equal to what we expect
         self.l_assertEqual("https://github.com/mozilla/geckodriver/", r.get_attribute("href"))
         self.selenium.alert("End of the browsing test", 2, 2)
 
