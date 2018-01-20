@@ -115,3 +115,6 @@ resources/inject/node_modules
 
 # Mac files
 .DS_Store
+
+#Idea files
+.idea/
