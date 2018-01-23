@@ -14,8 +14,8 @@ a {
 }
 
 .main-content > h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    color: black;
+    font-weight: bold !important;
+    color: black !important;
 }
 
 #logo-header {
