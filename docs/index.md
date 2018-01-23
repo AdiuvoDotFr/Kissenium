@@ -22,7 +22,7 @@ This software is based on unittest, HTMLTestRunner, and Selenium.
 
 There are also many python packages used, please refer to packages.pip to learn more.
 
-![Kissenium Mockup](/docs/assets/images/kissenium-mockup.jpg)
+![Kissenium Mockup](/assets/images/kissenium-mockup.jpg)
 
 ## Functionalities (done and to do)
 
