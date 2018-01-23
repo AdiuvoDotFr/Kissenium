@@ -9,9 +9,11 @@
 
 .page-header {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('http://www.kissenium.org/assets/images/kissenium-header.jpg');
-    background-position: center top;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     font-weight: 100;
-    color: rgba(0,0,0,0.6);
+    color: rgba(255,255,255,0.6);
 }
 
 table {
