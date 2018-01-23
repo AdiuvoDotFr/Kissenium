@@ -3,6 +3,21 @@
 
 @import "{{ site.theme }}";
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color: #499EE1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: black;
+}
+
 #logo-header {
     max-height: 250px;
 }
@@ -13,7 +28,11 @@
     background-attachment: fixed;
     background-size: cover;
     font-weight: 100;
-    color: rgba(255,255,255,0.6);
+    color: white;
+}
+
+.button {
+    border-radius: unset;
 }
 
 table {
