@@ -80,7 +80,6 @@ class TestDemo(GenericTest):
         self.l_assertEqual("https://github.com/mozilla/geckodriver/", r.get_attribute("href"))
         self.selenium.alert("End of the browsing test", 2, 2)
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_2_resize_demo(self):
         """
         This test show us a browser resize demo
@@ -97,7 +96,6 @@ class TestDemo(GenericTest):
         self.selenium.maximize()
         self.selenium.alert("Maximize the window", 2, 2)
 
-    @unittest.skip("This is an example of a skipped test.")
     def test_3_documentation_mode(self):
         """
         This test show us a small "documentation mode" example

@@ -49,7 +49,7 @@ class Kissenium:
         self.config = Config()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
-        self.test_classes_to_run = [scenarios.TestDemo]
+        self.test_classes_to_run = [scenarios.TestDemo, scenarios.ParallelDemo]
         self.loader = TestLoader()
         self.suites = []
 
@@ -131,8 +131,8 @@ class Kissenium:
             status, results = self.execution()
 
         self.logger.info("All tests have been executed. Kissenium will stop now.")
-        # HtmlRender(results, self.start).create_index()
-        # JunitResults(results, self.start).generate()
+        HtmlRender(results, self.start).create_index()
+        JunitResults(results, self.start).generate()
         sys.exit(not status)
 
 
