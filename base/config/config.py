@@ -18,6 +18,12 @@ class Config:
         else:
             return default
 
+    def get_run_parallel(self):
+        return self.get_default('RunParallel', 'False')
+
+    def get_max_parallel(self):
+        return self.get_default('MaxParallel', 5)
+
     def get_log_level(self):
         return self.get_default('LogLevel', 'DEBUG')
 
@@ -28,7 +34,10 @@ class Config:
         return self.get_default('CaptureOnFail', 'True')
 
     def get_capture_size(self):
-        return self.get_default('CaptureSize', 'Browser')
+        if self.get_run_parallel() == 'True':
+            return 'Browser'
+        else:
+            return self.get_default('CaptureSize', 'Browser')
 
     def get_fail_on_assert_error(self):
         return self.get_default('FailOnAssertError', 'True')
@@ -37,7 +46,10 @@ class Config:
         return self.get_default('FailOnError', 'True')
 
     def get_record_scenarios(self):
-        return self.get_default('RecordScenarios', 'True')
+        if self.get_run_parallel() == 'True':
+            return 'False'
+        else:
+            return self.get_default('RecordScenarios', 'True')
 
     def get_capture_end_of_test(self):
         return self.get_default('CaptureEndOfTest', 'False')

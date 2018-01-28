@@ -25,26 +25,35 @@ class KisseniumUnitTests(unittest.TestCase):
         SmallTools.check_path("reports/tmp")
 
     def test_config_reader(self):
-        config = Config()
-        self.assertEqual("Chrome", config.get_browser())
+        try:
+            config_ref = configparser.ConfigParser()
+            config_ref.read('kissenium.ini')
 
-        # Test fallback value
-        new_config = configparser.ConfigParser()
-        new_config.read('kissenium.ini')
-        config_ref = configparser.ConfigParser()
-        config_ref.read('kissenium.ini')
+            # Test default values
+            config = Config()
+            self.assertEqual("Chrome", config.get_browser())
+            self.assertEqual("True", config.get_record_scenarios())
+            self.assertEqual("Full", config.get_capture_size())
 
-        new_config.remove_option('Kissenium', 'Browser')
-        with open('kissenium.ini', 'w') as f:
-            new_config.write(f)
+            # Test fallback value
+            # We also test that CaptureSize and RecordScenarios are deactivated when we are using the parallel execution
+            new_config = configparser.ConfigParser()
+            new_config.read('kissenium.ini')
 
-        config = Config()
-        self.assertEqual("Chrome", config.get_browser())
+            new_config.remove_option('Kissenium', 'Browser')
+            new_config.set('Kissenium', 'RunParallel', 'True')
+            with open('kissenium.ini', 'w') as f:
+                new_config.write(f)
 
-        #Resetting ini file values
-        with open('kissenium.ini', 'w') as f:
-            config_ref.write(f)
+            config = Config()
+            self.assertEqual("Chrome", config.get_browser())
+            self.assertEqual("Browser", config.get_capture_size())
+            self.assertEqual("False", config.get_record_scenarios())
 
+        finally:
+            # Resetting ini file values
+            with open('kissenium.ini', 'w') as f:
+                config_ref.write(f)
 
     def test_logger(self):
         """Test the logger functions"""

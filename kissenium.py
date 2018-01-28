@@ -21,21 +21,32 @@ import datetime
 import glob
 import sys
 from unittest import TestLoader, TestSuite
+from concurrent.futures import ThreadPoolExecutor
 
 from HtmlTestRunner import HTMLTestRunner
 
 import scenarios
 from base.logs.log import Log4Kissenium
+from base.config.config import Config
 from base.reports.html import HtmlRender
 from base.reports.junit import JunitResults
 from base.tools.sm_tools import SmallTools
 
 
-class Runner:
+class Kissenium:
+    """
+    Run all defined kissenium tests
+    Solution for parrallel execution finded here :
+        https://stackoverflow.com/questions/38189461/how-can-i-execute-in-parallel-selenium-python-tests-with-unittest
+    """
 
     def __init__(self):
+        """
+        Init Kissenium Runner class
+        """
         self.start = datetime.datetime.now()
         self.prepare_for_run()
+        self.config = Config()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
         self.test_classes_to_run = [scenarios.TestDemo]
@@ -44,29 +55,87 @@ class Runner:
 
     @staticmethod
     def clean_reports_folder():
+        """
+        Clean reports folder on every run
+        :return:
+        """
         reports_list = glob.glob("reports/*")
         globs = [reports_list]
         for g in globs:
             SmallTools.delete_from_glob(g)
 
     def prepare_for_run(self):
+        """
+        Prepare the report folders for Kissenium execution
+        :return:
+        """
         self.clean_reports_folder()
         SmallTools.check_path("reports/tmp")
 
-    def run(self):
+    def execution(self):
+        """
+        Execute Kissenium with a signle test runner
+        :return:
+        """
+        results = {}
         for test_class in self.test_classes_to_run:
             suite = self.loader.loadTestsFromTestCase(test_class)
             self.suites.append(suite)
 
         suite = TestSuite(self.suites)
-        test_runner = HTMLTestRunner(output='html', template='resources/html/kissenium-template.html', report_title='Test report')
-        results = test_runner.run(suite)
-        HtmlRender(results, self.start).create_index()
-        JunitResults(results, self.start).generate()
+        test_runner = HTMLTestRunner(output='html',
+                                     template='resources/html/kissenium-template.html',
+                                     report_title='Test report')
+        results['single_runner'] = test_runner.run(suite)
+        return (results['single_runner'].wasSuccessful()), results
+
+    def parallel_execution(self):
+        """
+        Execute kissenium with parallels tests runners
+        You can modify the max number of parallel runners in kissenium.ini
+        :return:
+        """
+        suite = TestSuite()
+        results = {}
+
+        for test in self.test_classes_to_run:
+            suite.addTest(TestLoader().loadTestsFromTestCase(test))
+
+        with ThreadPoolExecutor(max_workers=int(self.config.get_max_parallel())) as executor:
+            list_of_suites = list(suite)
+            for test in list_of_suites:
+                results[str(test)] = executor.submit(
+                    HTMLTestRunner(output='html',
+                                   template='resources/html/kissenium-template.html',
+                                   report_title=str(test)).run, test)
+            executor.shutdown(wait=True)
+
+        for key, future in results.items():
+            result = future.result()
+            self.logger.debug('[%s] Result is : %s', key, result.wasSuccessful())
+            if not result.wasSuccessful():
+                return False, results
+        return True, results
+
+    def run(self):
+        """
+        Run Kissenium tests
+        :return:
+        """
+        self.logger.info('Launching tests ...')
+        if self.config.get_run_parallel() == 'True':
+            self.logger.info("Test are parallel")
+            status, results = self.parallel_execution()
+        else:
+            self.logger.info("Test are not parallel")
+            status, results = self.execution()
+
         self.logger.info("All tests have been executed. Kissenium will stop now.")
-        sys.exit(not results.wasSuccessful())
+        # HtmlRender(results, self.start).create_index()
+        # JunitResults(results, self.start).generate()
+        sys.exit(not status)
+
 
 
 if __name__ == '__main__':
-    runner = Runner()
-    runner.run()
+    Kissenium().run()
