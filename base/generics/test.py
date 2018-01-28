@@ -1,26 +1,35 @@
 # coding: utf-8
 
-from base.capture.record import Record
-from base.generics import BaseTest
+"""
+This class is not used anymore
+"""
+
+
+from Base.capture.record import Record
+from Base.Generics import BaseTest
 
 
 class GenericTest(BaseTest):
-
     """
-        This test take care of the parameters sets in kissenium.ini about recording the whole tests and taking a capture
-        at the end of the test. If you want your test to always have a video record, please use the GenericTestVideo
-        class instead.
-        You also have a GenericTestCapture who will take a screenshot at each end of test.
-        Please refer to config.py to learn about the parameters to be set in kissenium.ini
+    This class is not used anymore
     """
+    # TODO Check if we need to keep this class or not
 
     def setUp(self):
+        """
+        This is the setup function, it will be call before every test to run
+        :return: Nothing
+        """
         self.self_setup()
         if self.config.get_record_scenarios() == 'True':
             self.recorder = Record(self.__class__.__name__, self._testMethodName)
             self.recorder.start()
 
     def tearDown(self):
+        """
+        This is the teardown function, it will be call after every test to run
+        :return: Nothing
+        """
         if self.config.get_capture_end_of_test() == 'True':
             self.take_capture()
 

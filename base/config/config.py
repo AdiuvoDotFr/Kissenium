@@ -1,18 +1,40 @@
 # coding: utf-8
 
+"""
+Manipulation of the Kissenium configuration (eg: kissenium.ini)
+"""
+
 import configparser
 
 
 class Config:
+    """
+    Obtain the configuration value or the default fallback value
+    from this class
+    """
 
     def __init__(self, config_file='kissenium.ini'):
+        """
+        Init the class (you can specify the file if you need
+        :param config_file:
+        """
         self.config = configparser.ConfigParser()
         self.config.read(config_file)
 
     def get_config(self):
+        """
+        Get the configuration object
+        :return:
+        """
         return self.config
 
     def get_default(self, parameter, default):
+        """
+        Get the config parameter or the default fallback value
+        :param parameter: Parameter name
+        :param default: Fallback value
+        :return:
+        """
         if parameter in self.config['Kissenium']:
             return self.config['Kissenium'][parameter]
         else:
@@ -25,6 +47,10 @@ class Config:
         return self.get_default('MaxParallel', 5)
 
     def get_log_level(self):
+        """
+
+        :return:
+        """
         return self.get_default('LogLevel', 'DEBUG')
 
     def get_capture_on_assert_fail(self):
