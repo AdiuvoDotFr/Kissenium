@@ -312,6 +312,16 @@ class Selenium:
         self.logger.info("[hover_by_xpath] Success")
 
     @exception()
+    def scroll_to_element(self, e):
+        """
+        Hover one element
+        :param xpath: xpath element to find
+        :return:
+        """
+        self.browser.execute_script("arguments[0].scrollIntoView();", e)
+        self.logger.info("[scroll_to_element] Success")
+
+    @exception()
     def move_cursor_to(self, xpath):
         """
         Hover one element with xpath

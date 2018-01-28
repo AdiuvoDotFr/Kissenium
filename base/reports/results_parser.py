@@ -10,19 +10,37 @@ class ResultsParser:
 
     @staticmethod
     def get_stats(results, start):
-        logger = Log4Kissenium.get_logger("Kissenium")
         try:
             duration = datetime.datetime.now() - start
+            tests_runned = 0
+            skipped = 0
+            failures = 0
+            successes = 0
+            errors = 0
+
+            for key, future in results.items():
+                if key == 'single_runner':
+                    result = future
+                else:
+                    result = future.result()
+
+                tests_runned += result.testsRun
+                skipped += len(result.skipped)
+                failures += len(result.failures)
+                successes += len(result.successes)
+                errors += len(result.errors)
+
             stats = {
-                'tests_runned': results.testsRun,
-                'skipped' : len(results.skipped),
-                'failures' : len(results.failures),
-                'successes': len(results.successes),
-                'errors': len(results.errors),
+                'tests_runned': tests_runned,
+                'skipped' : skipped,
+                'failures' : failures,
+                'successes': successes,
+                'errors': errors,
                 'duration': str(datetime.timedelta(seconds=duration.seconds)),
             }
             return stats
         except Exception as e:
+            logger = Log4Kissenium.get_logger("Kissenium")
             logger.error(e)
             logger.error(traceback.format_exc())
 
@@ -62,15 +80,22 @@ class ResultsParser:
     def results_to_array(results):
         r = {}
         # Successes
-        for t in results.successes:
-            ResultsParser.add_test_in(r, t, "success")
-        # Errors
-        for t in results.errors:
-            ResultsParser.add_test_in(r, t, "error")
-        # Failures
-        for t in results.failures:
-            ResultsParser.add_test_in(r, t, "failure")
-        # Skipped
-        for t in results.skipped:
-            ResultsParser.add_test_in(r, t, "skipped")
+
+        for key, future in results.items():
+            if key == 'single_runner':
+                result = future
+            else:
+                result = future.result()
+
+            for t in result.successes:
+                ResultsParser.add_test_in(r, t, "success")
+            # Errors
+            for t in result.errors:
+                ResultsParser.add_test_in(r, t, "error")
+            # Failures
+            for t in result.failures:
+                ResultsParser.add_test_in(r, t, "failure")
+            # Skipped
+            for t in result.skipped:
+                ResultsParser.add_test_in(r, t, "skipped")
         return r
