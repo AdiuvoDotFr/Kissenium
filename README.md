@@ -31,7 +31,7 @@ There are also many python packages used, please refer to packages.pip to learn 
 * [x] Demo mode : print message and show where the test is clicking (experimental)
 * [ ] Selenium grid
 * [ ] Read data from csv files
-* [ ] Run many tests in the same time
+* [x] Run many tests in the same time
 
 ## Installation, documentation
 
