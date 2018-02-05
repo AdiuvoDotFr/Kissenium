@@ -27,12 +27,16 @@ class Record(threading.Thread):
     scenario = ""
 
     def __init__(self, scenario, test):
-        """
-        Note: if we wan't to record distant execution of kissenium (not implemented for now),
-        # we could think of using vnc server on the remote executor
+        """Initialition of the Record class.
 
-        :param scenario: Scenario name
-        :param test: Test name
+        Note:
+            if we wan't to record distant execution of kissenium (not implemented for now),
+            we could think of using vnc server on the remote executor.
+
+        Args:
+            scenario (str): Scenario name.
+            test (str): Test name.
+
         """
         threading.Thread.__init__(self)
         self.scenario = scenario
@@ -46,6 +50,7 @@ class Record(threading.Thread):
         """Start recording your screen
 
         :return:
+
         """
         try:
             thread = threading.Thread(name='ScreenRecorder', target=self.record_screen)

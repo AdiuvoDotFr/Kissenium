@@ -16,10 +16,12 @@ class Screenshot:
     scenario = ""
 
     def __init__(self, scenario, test):
-        """Initializing the Screenshot class
+        """Initializing the Screenshot class.
 
-        :param scenario: Scenario name
-        :param test: Test name
+        Args:
+            scenario (str): Scenario name.
+            test (str): Test name.
+
         """
         self.scenario = scenario
         self.test = test
@@ -28,11 +30,10 @@ class Screenshot:
         self.reports_folder = SmallTools.get_reports_folder(self.scenario)
 
     def capture(self, browser, suffix=''):
-        """Capture the current test
+        """Capture the current test.
 
-        :param browser: Selenium instance
-        :param suffix: Suffix to put to filename
-        :return:
+            :param browser: Selenium instance.
+            :param suffix: Suffix to put to filename.
         """
         if suffix != '':
             suffix = '-' + suffix
@@ -47,7 +48,7 @@ class Screenshot:
         """Capture the current screen (full capture)
 
         :param filename: Filename to use
-        :return:
+
         """
         with mss.mss() as sct:
             sct_img = sct.grab(sct.monitors[1])
@@ -61,7 +62,7 @@ class Screenshot:
 
         :param browser: Selenium instance
         :param filename: Filename to use
-        :return:
+
         """
         reports_folder = SmallTools.get_reports_folder(self.scenario)
         browser.get_screenshot_as_file(reports_folder + filename)

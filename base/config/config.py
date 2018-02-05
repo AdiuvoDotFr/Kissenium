@@ -38,6 +38,7 @@ class Config:
         return param
 
     def get_run_parallel(self):
+        """Get in the """
         return self.get_default('RunParallel', 'False')
 
     def get_max_parallel(self):
