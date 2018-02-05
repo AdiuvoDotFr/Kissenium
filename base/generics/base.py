@@ -127,7 +127,7 @@ class BaseTest(unittest.TestCase):
         :return: Nothing
         """
         self.assertIsNone(a)
-        self.logger.info("AssertIsNone : %s is None", a)
+        self.logger.info("AssertIsNone : %s is None" % a)
 
     @assertion_error()
     def l_assertIsNotNone(self, a, stop_on_fail=None):

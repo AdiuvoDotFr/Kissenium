@@ -1,6 +1,5 @@
 # coding: utf-8
 """Kissenium configuration module
-
 """
 
 import configparser
