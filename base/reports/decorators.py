@@ -44,7 +44,7 @@ def assertion_error():
                 if args[-1] is True:
                     raise AssertionError(message)
                 elif args[-1] is not None and args[-1] is False:
-                    return
+                    pass
                 elif not self.config.get_fail_on_assert_error() == 'False':
                     raise AssertionError(message)
         return wrapper

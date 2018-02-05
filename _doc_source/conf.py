@@ -100,7 +100,7 @@ html_theme = 'classic'
 html_theme_options = {
     'stickysidebar': True,
     'externalrefs': True,
-    'codebgcolor': '#141003',
+    'codebgcolor': '#000',
     'codetextcolor': '#FFF',
 
 }

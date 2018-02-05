@@ -45,7 +45,3 @@ class HtmlRender:
             self.logger('Error while creating file')
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
-        except Exception as e:
-            self.logger.error('Unknown error while creating file, check the stacktrace for details')
-            self.logger.error(e)
-            self.logger.error(traceback.format_exc())

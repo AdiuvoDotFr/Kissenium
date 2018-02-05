@@ -39,7 +39,7 @@ class BaseTest(unittest.TestCase):
         :return:
         """
         self.selenium.quit()
-        self.logger.info("End of %s - %s Test" % (self.__class__.__name__, self._testMethodName))
+        self.logger.info("End of %s - %s Test", self.__class__.__name__, self._testMethodName)
 
     def get_logger(self):
         """
@@ -127,7 +127,7 @@ class BaseTest(unittest.TestCase):
         :return: Nothing
         """
         self.assertIsNone(a)
-        self.logger.info("AssertIsNone : %s is None" % a)
+        self.logger.info("AssertIsNone : %s is None", a)
 
     @assertion_error()
     def l_assertIsNotNone(self, a, stop_on_fail=None):

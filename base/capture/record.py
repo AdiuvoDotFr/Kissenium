@@ -51,7 +51,7 @@ class Record(threading.Thread):
             thread = threading.Thread(name='ScreenRecorder', target=self.record_screen)
             thread.start()
         except Exception as e:
-            self.logger.error("Threading exception")
+            self.logger.error("Thread exception")
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
 
@@ -101,7 +101,7 @@ class Record(threading.Thread):
             os.system('ffmpeg -loglevel panic -hide_banner -nostats -i "concat:reports/tmp/'
                       + self.test + '_body.avi|reports/tmp/' + self.test + '_lastimg.avi" -c copy '
                       + self.reports_folder + self.test + '.avi')
-        except Exception as e:
+        except OSError as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
 
@@ -127,13 +127,9 @@ class Record(threading.Thread):
 
         :return:
         """
-        try:
-            target = glob.glob("reports/tmp/" + self.test + "*")
-            SmallTools.delete_from_glob(target)
-        # TODO Delete exception and replace it by something most global
-        except Exception as e:
-            self.logger.error(e)
-            self.logger.error(traceback.format_exc())
+        target = glob.glob("reports/tmp/" + self.test + "*")
+        SmallTools.delete_from_glob(target)
+
 
     def ffmpeg_record_mac(self):
         """Take many small video of the screen while not self.stop.recording
@@ -150,8 +146,7 @@ class Record(threading.Thread):
                 subprocess.Popen(arguments)
                 time.sleep(2)
                 i += 1
-        # TODO Subprocess exception
-        except Exception as e:
+        except subprocess.SubprocessError as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
 
@@ -167,12 +162,10 @@ class Record(threading.Thread):
                 for video in video_list_glob:
                     start = "" if video_list == "" else "|"
                     video_list += start + video
-                self.logger.debug(video_list)
                 os.system('ffmpeg -loglevel panic -hide_banner -nostats -i "concat:' + video_list
                           + '" -c copy ' + self.reports_folder + self.test + '.avi')
             else:
                 self.logger.error('Not handled for now.')
-        # TODO os system exception
-        except Exception as e:
+        except OSError as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())

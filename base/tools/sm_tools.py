@@ -3,6 +3,8 @@
 import os
 import re
 import shutil
+import traceback
+from base.logs.log import Log4Kissenium
 
 
 class SmallTools:
@@ -43,11 +45,16 @@ class SmallTools:
         :param g: Glob
         :return: Nothing
         """
-        for f in g:
-            if os.path.isdir(f):
-                shutil.rmtree(f)
-            else:
-                os.remove(f)
+        try:
+            for f in g:
+                if os.path.isdir(f):
+                    shutil.rmtree(f)
+                else:
+                    os.remove(f)
+        except (OSError, IOError) as e:
+            logger = Log4Kissenium.get_logger("Kissenium")
+            logger.error(e)
+            logger.error(traceback.format_exc())
 
     @staticmethod
     def create_file(path, file, content):

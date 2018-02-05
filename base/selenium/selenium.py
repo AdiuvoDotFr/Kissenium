@@ -38,8 +38,8 @@ class Selenium:
             self.resize_window(width, height)
 
     def __handle_exception(self, message):
-        """
-        Handle Selennium exception
+        """Handle Selennium exception
+
         :return: Nothing
         """
         self.logger.error(message)
