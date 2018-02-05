@@ -5,8 +5,8 @@ This class is not used anymore
 """
 
 
-from Base.capture.record import Record
-from Base.Generics import BaseTest
+from base.capture.record import Record
+from base.generics.base import BaseTest
 
 
 class GenericTest(BaseTest):

@@ -16,13 +16,14 @@ class HtmlRender:
     files = []
 
     def __init__(self, results, start):
-        self.tpl_env = Environment(autoescape=False, loader=FileSystemLoader(os.path.join("resources/", 'html')),
+        self.tpl_env = Environment(autoescape=False,
+                                   loader=FileSystemLoader(os.path.join("resources/", 'html')),
                                    trim_blocks=False)
         self.logger = Log4Kissenium.get_logger("Kissenium")
         self.stats = ResultsParser.get_stats(results, start)
         for file in glob.glob("reports/html/*.html"):
             f = os.path.basename(file)
-            if (f == "index.html"):
+            if f == "index.html":
                 pass
             else:
                 self.files.append(f)
@@ -45,6 +46,6 @@ class HtmlRender:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
         except Exception as e:
-            self.logger.error('Unknown error while creating file, see the stacktrace for more details')
+            self.logger.error('Unknown error while creating file, check the stacktrace for details')
             self.logger.error(e)
             self.logger.error(traceback.format_exc())

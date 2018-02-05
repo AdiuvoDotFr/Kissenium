@@ -118,3 +118,6 @@ resources/inject/node_modules
 
 #Idea files
 .idea/
+
+#Documentation result
+_documentation

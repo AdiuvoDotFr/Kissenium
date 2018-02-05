@@ -14,18 +14,20 @@ class Platform:
     @staticmethod
     def get_os():
         if platform == "linux" or platform == "linux32":
-            return "linux"
+            current_platform = "linux"
         elif platform == "darwin":
-            return "mac"
+            current_platform = "mac"
         elif platform == "win32":
-            return "win"
+            current_platform = "win"
+        return current_platform
 
     @staticmethod
     def get_arch():
         if struct.calcsize('P') * 8 == 64:
-            return "amd64"
+            arch = "amd64"
         else:
-            return "i386"
+            arch = "i386"
+        return arch
 
     @staticmethod
     def get_webdriver(browser):
@@ -34,15 +36,18 @@ class Platform:
         os_name = Platform.get_os()
         os_arch = Platform.get_arch()
 
-        logger.debug("Os type is %s and architecture is %s" % (os_name, os_arch))
+        logger.debug("Os type is %s and architecture is %s", os_name, os_arch)
 
         if browser == "Chrome":
-            chromedriver = "%s/resources/webdriver/chrome/%s/%s/chromedriver" % (os.getcwd(), os_name, os_arch)
+            chromedriver = "%s/resources/webdriver/chrome/%s/%s/chromedriver" \
+                           % (os.getcwd(), os_name, os_arch)
             os.environ["webdriver.chrome.driver"] = chromedriver
             return webdriver.Chrome(chromedriver)
         elif browser == "Firefox":
-            geckodriver = "%s/resources/webdriver/firefox/%s/%s/geckodriver" % (os.getcwd(), os_name, os_arch)
+            geckodriver = "%s/resources/webdriver/firefox/%s/%s/geckodriver" \
+                          % (os.getcwd(), os_name, os_arch)
             logger.debug(geckodriver)
-            return webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log', executable_path=geckodriver)
-        else :
+            return webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log',
+                                     executable_path=geckodriver)
+        else:
             raise ValueError('Unrecognized browser specified in configuration')

@@ -11,18 +11,18 @@ def exception(message=None):
             try:
                 return func(self, *args, **kwargs)
             except Exception as e:
-                if not message == None:
+                if not message is None:
                     self.logger.error(message)
                 self.logger.error('[%s] Error is : %s' %(func.__name__, e))
                 if self.config.get_capture_on_fail() == "True":
                     if not 'browser' in dir(self) and not 'screenshot' in dir(self):
-                        self.logger.error('Can\'t take a screenshot, either <browser> or <screenshot> is <None>')
+                        self.logger.error(
+                            'Can\'t take a screenshot, either <browser> or <screenshot> is <None>')
                     else:
                         self.screenshot.capture(self.browser, message)
                 if self.config.get_fail_on_error() == "True":
                     raise Exception(message)
                 return False
-            raise
         return wrapper
     return decorator
 

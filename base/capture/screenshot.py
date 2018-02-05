@@ -1,7 +1,6 @@
 # coding: utf-8
 
-"""
-Module screenshot: take a screenshot of the full scren or the browser
+"""Module screenshot: take a screenshot of the full scren or the browser
 """
 
 import mss
@@ -12,14 +11,13 @@ from base.tools.sm_tools import SmallTools
 
 
 class Screenshot:
-    """
-    Class used to take screenshot of the full screen or the browser only
+    """Class used to take screenshot of the full screen or the browser only
     """
     scenario = ""
 
     def __init__(self, scenario, test):
-        """
-        Initializing the Screenshot class
+        """Initializing the Screenshot class
+
         :param scenario: Scenario name
         :param test: Test name
         """
@@ -30,8 +28,8 @@ class Screenshot:
         self.reports_folder = SmallTools.get_reports_folder(self.scenario)
 
     def capture(self, browser, suffix=''):
-        """
-        Capture the current test
+        """Capture the current test
+
         :param browser: Selenium instance
         :param suffix: Suffix to put to filename
         :return:
@@ -46,8 +44,8 @@ class Screenshot:
             self.capture_browser(browser, filename)
 
     def capture_screen(self, filename):
-        """
-        Capture the current screen (full capture)
+        """Capture the current screen (full capture)
+
         :param filename: Filename to use
         :return:
         """
@@ -59,8 +57,8 @@ class Screenshot:
             img.save(output)
 
     def capture_browser(self, browser, filename):
-        """
-        Capture the test inside the brpwser
+        """Capture the test inside the browser
+
         :param browser: Selenium instance
         :param filename: Filename to use
         :return:

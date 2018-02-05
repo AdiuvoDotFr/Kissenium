@@ -1,44 +1,42 @@
 # coding: utf-8
+"""Kissenium configuration module
 
-"""
-Manipulation of the Kissenium configuration (eg: kissenium.ini)
 """
 
 import configparser
 
 
 class Config:
-    """
-    Obtain the configuration value or the default fallback value
-    from this class
+    """Obtain the configuration value or the default fallback value from this class
     """
 
     def __init__(self, config_file='kissenium.ini'):
-        """
-        Init the class (you can specify the file if you need
+        """Init the class (you can specify the file if you need
+
         :param config_file:
         """
         self.config = configparser.ConfigParser()
         self.config.read(config_file)
 
     def get_config(self):
-        """
-        Get the configuration object
+        """Get the configuration object
+
         :return:
         """
         return self.config
 
     def get_default(self, parameter, default):
-        """
-        Get the config parameter or the default fallback value
+        """Get the config parameter or the default fallback value
+
         :param parameter: Parameter name
         :param default: Fallback value
         :return:
         """
         if parameter in self.config['Kissenium']:
-            return self.config['Kissenium'][parameter]
+            param = self.config['Kissenium'][parameter]
         else:
-            return default
+            param = default
+        return param
 
     def get_run_parallel(self):
         return self.get_default('RunParallel', 'False')
@@ -47,7 +45,7 @@ class Config:
         return self.get_default('MaxParallel', 5)
 
     def get_log_level(self):
-        """
+        """Get the log level
 
         :return:
         """
@@ -61,9 +59,10 @@ class Config:
 
     def get_capture_size(self):
         if self.get_run_parallel() == 'True':
-            return 'Browser'
+            param = 'Browser'
         else:
-            return self.get_default('CaptureSize', 'Browser')
+            param = self.get_default('CaptureSize', 'Browser')
+        return param
 
     def get_fail_on_assert_error(self):
         return self.get_default('FailOnAssertError', 'True')
@@ -73,9 +72,10 @@ class Config:
 
     def get_record_scenarios(self):
         if self.get_run_parallel() == 'True':
-            return 'False'
+            param = 'False'
         else:
-            return self.get_default('RecordScenarios', 'True')
+            param = self.get_default('RecordScenarios', 'True')
+        return param
 
     def get_capture_end_of_test(self):
         return self.get_default('CaptureEndOfTest', 'False')

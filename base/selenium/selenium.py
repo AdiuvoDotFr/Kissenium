@@ -1,21 +1,25 @@
 # coding: utf-8
+# pylint: disable=R0904
 
-from base.tools.js_tools import JsTools
-from base.tools.platform import Platform
+"""Selenium Module
+Here we will define all methods used in the web browser."""
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from base.config.config import Config
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from base.reports.decorators import exception
+from base.tools.js_tools import JsTools
+from base.tools.platform import Platform
+from base.config.config import Config
 
 
 class Selenium:
-    """
-        Selenium class to use Selenium webdriver or marionette
-        This class is intented to surround every selenium call with a maximum of reporting in case of error
+    """Selenium class to use Selenium webdriver or marionette
+    This class is intented to surround every selenium call with a maximum of reporting in case of
+    error
     """
 
     def __init__(self, logger, screenshot):

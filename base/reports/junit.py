@@ -29,16 +29,17 @@ class JunitResults:
                 # Iterate over testcases
                 for ki, vi in v.items():
                     test += 1
-                    if (vi['status'] == 'success'):
+                    if vi['status'] == 'success':
                         successes += 1
-                    elif (vi['status'] == 'error'):
+                    elif vi['status'] == 'error':
                         errors += 1
-                    elif (vi['status'] == 'failure'):
+                    elif vi['status'] == 'failure':
                         failures += 1
-                    elif (vi['status'] == 'skipped'):
+                    elif vi['status'] == 'skipped':
                         skipped += 1
 
-                    xml_tc = ET.SubElement(xml_ts, "testcase", classname=k.replace('.', '/'), name=k)
+                    xml_tc = ET.SubElement(xml_ts, "testcase", classname=k.replace('.', '/'),
+                                           name=k)
                     if not vi['status'] == "success":
                         ET.SubElement(xml_tc, vi['status']).text = vi['message']
 
@@ -48,8 +49,6 @@ class JunitResults:
                 xml_ts.set('tests', str(test))
                 xml_ts.set('name', k.split('.')[-1])
                 xml_ts.set('package', k.replace('.', '/'))
-
-            tree = ET.ElementTree(root)
 
             s = minidom.parseString(ET.tostring(root, 'utf-8'))
             SmallTools.create_file('Kissenium/', 'reports.xml', s.toprettyxml(indent="  "))

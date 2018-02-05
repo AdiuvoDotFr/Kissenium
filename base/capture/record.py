@@ -1,7 +1,6 @@
 # coding: utf-8
 
-"""
-Module record: recording the screen where is running all your tests
+"""Module record: recording the screen where is running all your tests
 """
 
 import glob
@@ -22,8 +21,7 @@ from base.tools.sm_tools import SmallTools
 
 
 class Record(threading.Thread):
-    """
-    This class permit to record the local screen where is running the selenium test
+    """This class permit to record the local screen where is running the selenium test
     """
     stop_recording = False
     scenario = ""
@@ -32,6 +30,7 @@ class Record(threading.Thread):
         """
         Note: if we wan't to record distant execution of kissenium (not implemented for now),
         # we could think of using vnc server on the remote executor
+
         :param scenario: Scenario name
         :param test: Test name
         """
@@ -44,8 +43,8 @@ class Record(threading.Thread):
         self.logger = Log4Kissenium.get_logger("Kissenium")
 
     def start(self):
-        """
-        Start recording your screen
+        """Start recording your screen
+
         :return:
         """
         try:
@@ -57,8 +56,9 @@ class Record(threading.Thread):
             self.logger.error(traceback.format_exc())
 
     def record_screen(self):
-        """
-        Record the screen
+        """Record the screen
+
+        :return:
         """
         # TODO The mac solution might be the nicest solution for every system
         if Platform.get_os() == "mac":
@@ -78,16 +78,15 @@ class Record(threading.Thread):
         self.clean_tmp()
 
     def stop(self):
-        """
-        Stop the current record action
+        """Stop the current record action
+
         :return:
         """
         self.stop_recording = True
 
     def generate_video(self):
-        """
-        Generate videos from bunch of images, make the last image
-        last longer in the video
+        """Generate videos from bunch of images, make the last image last longer in the video
+
         :return:
         """
         try:
@@ -107,10 +106,10 @@ class Record(threading.Thread):
             self.logger.error(traceback.format_exc())
 
     def take_captures(self, sct, i):
-        """
-        Take capture of the screen
-        :param sct:
-        :param i:
+        """Take capture of the screen
+
+        :param sct: mss instance
+        :param i: Id of the image
         :return:
         """
         try:
@@ -124,21 +123,21 @@ class Record(threading.Thread):
             self.logger.error(traceback.format_exc())
 
     def clean_tmp(self):
-        """
-        Clean the tmp dir after generated the video
+        """Clean the tmp dir when the video has been generated
+
         :return:
         """
         try:
             target = glob.glob("reports/tmp/" + self.test + "*")
             SmallTools.delete_from_glob(target)
-        # TODO Delete exception
+        # TODO Delete exception and replace it by something most global
         except Exception as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
 
     def ffmpeg_record_mac(self):
-        """
-        Take many small video of the screen while not self.stop.recording
+        """Take many small video of the screen while not self.stop.recording
+
         :return:
         """
         try:
@@ -157,8 +156,8 @@ class Record(threading.Thread):
             self.logger.error(traceback.format_exc())
 
     def ffmpeg_merge_tmp_videos(self):
-        """
-        Generate long video from bunch of small videos
+        """Generate long video from bunch of small videos
+
         :return:
         """
         try:

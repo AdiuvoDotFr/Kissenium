@@ -47,7 +47,7 @@ class ResultsParser:
     @staticmethod
     def add_test_in(r, t, status):
         try:
-            if (status == "success"):
+            if status == "success":
                 obj = t
                 mes = None
             else:

@@ -46,11 +46,12 @@ class JsTools:
         self.page_wait = page_wait
 
     def message(self, browser, message, message_timing=4, pause=2):
-        self.logger.info(
-            "[InjectMessage] message: Messaging status : %s | Message to send : %s " % (self.message_status, message))
+        self.logger.info("[InjectMessage] message: Messaging status : %s | Message to send : %s "
+                         % (self.message_status, message))
         if self.message_status == "True":
             self.inject_dependencies(browser)
-            browser.execute_script("spop({ template: '%s', autoclose: %s });" % (message, str(message_timing * 1000)))
+            browser.execute_script("spop({ template: '%s', autoclose: %s });"
+                                   % (message, str(message_timing * 1000)))
             time.sleep(pause)
 
     def dim_by_id(self, browser, element_id, timing=2):
@@ -67,16 +68,13 @@ class JsTools:
             try:
                 browser.find_element(By.__dict__.get('ID'), "kissenium")
             except NoSuchElementException:
-                self.logger.info("[InjectMessage] inject_dependencies: no dependencies injected, injecting them...")
+                self.logger.info("[InjectMessage] Dependencies not injected, injecting them...")
                 browser.execute_script(self.js_injector +
-                                       """
-                                        include_css('https://www.adiuvo.fr/kissenium.min.css', function(){});
-                                        include_js('https://www.adiuvo.fr/kissenium.min.js', 
-                                                    function(){ create_target(); });
-                                       """)
+                                       """include_css('https://www.adiuvo.fr/kissenium.min.css',
+                                       function(){});
+                                       include_js('https://www.adiuvo.fr/kissenium.min.js',
+                                       function(){ create_target(); });""")
                 WebDriverWait(browser, int(self.page_wait)).until(
                     ec.presence_of_element_located((By.ID, "kissenium"))
                 )
                 self.logger.info("[InjectMessage] inject_dependencies: Dependencies injected!")
-
-

@@ -31,15 +31,16 @@ class Log4Kissenium:
 
     def get_log_level(self):
         if self.config.get_log_level() == "DEBUG":
-            return logging.DEBUG
+            log_level = logging.DEBUG
         elif self.config.get_log_level() == "INFO":
-            return logging.INFO
+            log_level = logging.INFO
         elif self.config.get_log_level() == "WARNING":
-            return logging.WARNING
+            log_level = logging.WARNING
         elif self.config.get_log_level() == "ERROR":
-            return logging.ERROR
+            log_level = logging.ERROR
         else:
-            return logging.DEBUG
+            log_level = logging.DEBUG
+        return log_level
 
     @staticmethod
     def get_logger(name):

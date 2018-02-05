@@ -13,12 +13,11 @@ from base.reports.decorators import assertion_error
 
 
 class BaseTest(unittest.TestCase):
-    """
-        In this base class we will redefine some asserts tests to be sure that we have sufficient
-        logs in the test reports folders.
-        We do not modify the asserts tests, we just had logs where we want to and a status report.
-        Be sure to refer to this url if you want to had a new one :
-            https://docs.python.org/3/library/unittest.html
+    """In this base class we will redefine some asserts tests to be sure that we have sufficient
+    logs in the test reports folders.
+    We do not modify the asserts tests, we just had logs where we want to and a status report.
+    Be sure to refer to this url if you want to had a new one :
+    https://docs.python.org/3/library/unittest.html
     """
 
     def self_setup(self):
