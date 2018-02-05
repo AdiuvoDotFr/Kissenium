@@ -4,7 +4,7 @@ import os
 import re
 import shutil
 import traceback
-from base.logs.log import Log4Kissenium
+import logging
 
 
 class SmallTools:
@@ -52,7 +52,7 @@ class SmallTools:
                 else:
                     os.remove(f)
         except (OSError, IOError) as e:
-            logger = Log4Kissenium.get_logger("Kissenium")
+            logger = logging.getLogger("Kissenium")
             logger.error(e)
             logger.error(traceback.format_exc())
 
