@@ -38,26 +38,59 @@ class Config:
         return param
 
     def get_run_parallel(self):
-        """Get in the """
+        """Get the run parallel config.
+
+        :return :
+            String True or False.
+
+         """
         return self.get_default('RunParallel', 'False')
 
     def get_max_parallel(self):
+        """Get the max parallel config.
+
+        :return:
+            String True or False.
+
+        """
+
         return self.get_default('MaxParallel', 5)
 
     def get_log_level(self):
         """Get the log level
 
-        :return:
+        :return :
+            String.
+
         """
         return self.get_default('LogLevel', 'DEBUG')
 
     def get_capture_on_assert_fail(self):
+        """Get the capture on assert fail
+
+        :return:
+            String True or False.
+
+        """
+
         return self.get_default('CaptureOnAssertFail', 'True')
 
     def get_capture_on_fail(self):
+        """Get the capture on fail
+
+        :return:
+            String True or False.
+
+        """
         return self.get_default('CaptureOnFail', 'True')
 
     def get_capture_size(self):
+        """Get the capture size
+
+        :return:
+            String Browser.
+
+        """
         if self.get_run_parallel() == 'True':
             param = 'Browser'
         else:
