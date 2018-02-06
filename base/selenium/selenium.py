@@ -221,7 +221,16 @@ class Selenium:
         :param xpath:
         :return:
         """
-        return self.get_element_text_by_xpath(xpath).text
+        return self.get_first_element_by_xpath(xpath).text
+
+    @exception("Error getting the text element by xpath")
+    def get_element_text_by_id(self, xpath):
+        """
+        Get element by xpath£*
+        :param xpath:
+        :return:
+        """
+        return self.get_element_by_id(xpath).text
 
     @exception("Error getting the elements by xpath")
     def get_elements_by_xpath(self, xpath):
