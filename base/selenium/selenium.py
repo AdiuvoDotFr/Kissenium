@@ -133,17 +133,40 @@ class Selenium:
         """
         self.page_wait('XPATH', element)
 
-    @exception("Error testing the element")
     def test_element(self, by_type, path):
-        """
-        Test if the element is present in the page
-        :param by_type:
-        :param path:
+        """Test if the element is present in the page
+        This method will return True or False, but will not fail.
+        This method is intended to be used with an assert method
+
+        :param by_type: Type of path
+        :param path: Path (id, xpath)
         :return: Boolean
         """
-        self.browser.find_element(By.__dict__.get(by_type), value=path)
-        self.logger.info("[test_element] Success : %s -- %s " % (type, path))
-        return True
+        try:
+            self.browser.find_element(By.__dict__.get(by_type), value=path)
+            self.logger.info("[test_element] Success : %s -- %s " % (type, path))
+            return True
+        except Exception as e:
+            self.logger.info("[test_element] Element not found : %s -- %s " % (type, path))
+            return False
+
+    def test_element_by_xpath(self, xpath):
+        """Wrapper for test_element()
+        This method is intended to be used with an assert method
+
+        :param xpath: Xpath for element
+        :return: Boolean
+        """
+        return self.test_element("XPATH", xpath)
+
+    def test_element_by_id(self, id):
+        """Wrapper for test_element()
+        This method is intended to be used with an assert method
+
+        :param id: Element id
+        :return: Boolean
+        """
+        return self.test_element("ID", id)
 
     def get_element(self, by_type, path):
         """
