@@ -63,6 +63,9 @@ class Config:
     def get_browser_size(self):
         return self.get_default('BrowserSize', "Maximize")
 
+    def get_focus(self):
+        return self.get_default('BrowserFocus', 'True')
+
     def get_message_status(self):
         return self.get_default('BrowserMessage', False)
 
