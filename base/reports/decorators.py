@@ -1,5 +1,6 @@
 # coding: utf-8
 
+from functools import wraps
 
 def exception(message=None):
     """
@@ -7,6 +8,7 @@ def exception(message=None):
     @param message: The message to print (optionnal)
     """
     def decorator(func):
+        @wraps(func)
         def wrapper(self, *args, **kwargs):
             try:
                 return func(self, *args, **kwargs)
@@ -32,6 +34,7 @@ def assertion_error():
     A decorator to use in comparing assert
     """
     def decorator(func):
+        @wraps(func)
         def wrapper(self, *args, **kwargs):
             try:
                 return func(self, *args, **kwargs)

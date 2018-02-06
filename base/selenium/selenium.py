@@ -181,7 +181,7 @@ class Selenium:
 
     @exception("Error getting the text element by xpath")
     def get_element_text_by_xpath(self, xpath):
-        """Get element by xpath£*
+        """Get element by xpath
 
         :param xpath:
         """
