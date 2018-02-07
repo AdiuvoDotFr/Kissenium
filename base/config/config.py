@@ -34,7 +34,7 @@ class Config:
         return self.get_default('CaptureOnFail', 'True')
 
     def get_capture_size(self):
-        if self.get_run_parallel() == 'True' or self.get_run_parallel() == 'True' :
+        if self.get_run_parallel() == 'True' or self.get_headless() == 'True':
             return 'Browser'
         else:
             return self.get_default('CaptureSize', 'Browser')
@@ -46,7 +46,7 @@ class Config:
         return self.get_default('FailOnError', 'True')
 
     def get_record_scenarios(self):
-        if self.get_run_parallel() == 'True':
+        if self.get_run_parallel() == 'True' or self.get_headless() == 'True':
             return 'False'
         else:
             return self.get_default('RecordScenarios', 'True')
