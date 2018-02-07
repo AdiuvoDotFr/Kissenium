@@ -12,15 +12,17 @@ class Config:
     def __init__(self, config_file='kissenium.ini'):
         """Init the class (you can specify the file if you need
 
-        :param config_file:
+        :param: config_file.
+
         """
         self.config = configparser.ConfigParser()
         self.config.read(config_file)
 
     def get_config(self):
-        """Get the configuration object
+        """Get the configuration object.
 
         :return:
+
         """
         return self.config
 
@@ -29,6 +31,7 @@ class Config:
 
         :param parameter: Parameter name
         :param default: Fallback value
+
         :return:
         """
         if parameter in self.config['Kissenium']:
@@ -66,7 +69,7 @@ class Config:
         return self.get_default('LogLevel', 'DEBUG')
 
     def get_capture_on_assert_fail(self):
-        """Get the capture on assert fail
+        """Get the capture on assert fail.
 
         :return:
             String True or False.
@@ -76,7 +79,7 @@ class Config:
         return self.get_default('CaptureOnAssertFail', 'True')
 
     def get_capture_on_fail(self):
-        """Get the capture on fail
+        """Get the capture on fail.
 
         :return:
             String True or False.
@@ -85,7 +88,7 @@ class Config:
         return self.get_default('CaptureOnFail', 'True')
 
     def get_capture_size(self):
-        """Get the capture size
+        """Get the capture size.
 
         :return:
             String Browser.
@@ -98,12 +101,30 @@ class Config:
         return param
 
     def get_fail_on_assert_error(self):
+        """Get fail on assert error.
+
+         :return:
+            String True or False.
+
+         """
         return self.get_default('FailOnAssertError', 'True')
 
     def get_fail_on_error(self):
+        """Get fail on error.
+
+        :return:
+            String True or False.
+
+        """
         return self.get_default('FailOnError', 'True')
 
     def get_record_scenarios(self):
+        """Get record scenarios
+
+        :return:
+            String True or False.
+
+        """
         if self.get_run_parallel() == 'True':
             param = 'False'
         else:
@@ -111,19 +132,56 @@ class Config:
         return param
 
     def get_capture_end_of_test(self):
+        """Get capture end of test.
+
+        :return:
+            String True or False.
+
+        """
+
         return self.get_default('CaptureEndOfTest', 'False')
 
     def get_page_wait(self):
+        """Get page wait.
+
+        :return:
+            (int) wait five second.
+
+        """
         return self.get_default('PageWait', 5)
 
     def get_browser(self):
+        """Get browser.
+
+        :return:
+            String Browser.
+
+        """
         return self.get_default('Browser', "Chrome")
 
     def get_browser_size(self):
+        """Get Browser size.
+
+        :return:
+            String Browser.
+
+        """
         return self.get_default('BrowserSize', "Maximize")
 
     def get_message_status(self):
+        """Get message status.
+
+            :return:
+                String True or False.
+
+        """
         return self.get_default('BrowserMessage', False)
 
     def get_dim_status(self):
+        """Get dimentions status
+
+            :return:
+                String True or False.
+
+        """
         return self.get_default('DimForDemo', False)
