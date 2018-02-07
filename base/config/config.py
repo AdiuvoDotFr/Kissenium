@@ -34,7 +34,7 @@ class Config:
         return self.get_default('CaptureOnFail', 'True')
 
     def get_capture_size(self):
-        if self.get_run_parallel() == 'True':
+        if self.get_run_parallel() == 'True' or self.get_run_parallel() == 'True' :
             return 'Browser'
         else:
             return self.get_default('CaptureSize', 'Browser')
@@ -65,6 +65,9 @@ class Config:
 
     def get_focus(self):
         return self.get_default('BrowserFocus', 'True')
+
+    def get_headless(self):
+        return self.get_default('Headless', 'False')
 
     def get_message_status(self):
         return self.get_default('BrowserMessage', False)
