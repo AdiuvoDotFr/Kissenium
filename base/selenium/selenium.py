@@ -22,7 +22,7 @@ class Selenium:
         self.screenshot = screenshot
         self.logger = logger
         self.config = Config()
-        self.browser = Platform.get_webdriver(self.config.get_browser())
+        self.browser = Platform.get_webdriver(self.config.get_browser(), self.config.get_headless())
         if self.config.get_focus() == 'True':
             self.logger.debug('Focus on browser window.')
             self.browser.switch_to_window(self.browser.current_window_handle)

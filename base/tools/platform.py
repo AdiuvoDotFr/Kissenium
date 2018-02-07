@@ -5,7 +5,6 @@ import struct
 from sys import platform
 
 from selenium import webdriver
-
 from base.logs.log import Log4Kissenium
 
 
@@ -28,7 +27,7 @@ class Platform:
             return "i386"
 
     @staticmethod
-    def get_webdriver(browser):
+    def get_webdriver(browser, headless):
         # TODO Finish this function
         logger = Log4Kissenium.get_logger("Kissenium")
         os_name = Platform.get_os()
@@ -39,10 +38,22 @@ class Platform:
         if browser == "Chrome":
             chromedriver = "%s/resources/webdriver/chrome/%s/%s/chromedriver" % (os.getcwd(), os_name, os_arch)
             os.environ["webdriver.chrome.driver"] = chromedriver
-            return webdriver.Chrome(chromedriver)
+            options = webdriver.ChromeOptions()
+
+            if headless == 'True':
+                options.add_argument('headless')
+
+            return webdriver.Chrome(chromedriver, chrome_options=options)
+
         elif browser == "Firefox":
             geckodriver = "%s/resources/webdriver/firefox/%s/%s/geckodriver" % (os.getcwd(), os_name, os_arch)
             logger.debug(geckodriver)
-            return webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log', executable_path=geckodriver)
+            options = webdriver.FirefoxOptions()
+
+            if headless == 'True':
+                options.add_argument('headless')
+
+            return webdriver.Firefox(log_path='reports/Kissenium/geckodriver.log', executable_path=geckodriver, firefox_options=options)
+
         else :
             raise ValueError('Unrecognized browser specified in configuration')
