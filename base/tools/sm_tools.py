@@ -11,11 +11,13 @@ class SmallTools:
 
     @staticmethod
     def check_path(path):
-        """
-        Check if folder exist or not. If it doesn't exist, this method create it
+        """Check if folder exist or not. If it doesn't exist, this method create it
 
-        :param path: path of your folder
+        Arg:
+            :param: path: path of your folder
+
         :return: Nothing
+
         """
         if not os.path.exists(path):
             os.makedirs(path)
@@ -25,8 +27,11 @@ class SmallTools:
         """This method return the relative ath of your reports folder. Just give it the report your
         want to make.
 
-        :param path: Pathof your report folder
+        Arg:
+            :param: path: Pathof your report folder
+
         :return: Relative path of your report folder
+
         """
         if path.startswith('/'):
             path = path.replace('/', '', 1)
@@ -42,8 +47,11 @@ class SmallTools:
     def delete_from_glob(g):
         """Delete all folders and files givenin a glob
 
-        :param g: Glob
+        Arg:
+            :param: g: Glob
+
         :return: Nothing
+
         """
         try:
             for f in g:
@@ -60,10 +68,13 @@ class SmallTools:
     def create_file(path, file, content):
         """Create a file with a specified content
 
-        :param path: The path of your file. This path will be integrated in the results folder
-        :param file: The name of your file
-        :param content: The content of your file
+        Args:
+            :param: path: The path of your file. This path will be integrated in the results folder
+            :param: file: The name of your file
+            :param: content: The content of your file
+
         :return: Nothing
+
         """
         path = SmallTools.get_reports_folder(path)
         file_path = path + file
@@ -73,10 +84,26 @@ class SmallTools:
 
     @staticmethod
     def sanitize_filename(filename):
+        """Sanitize the filename
+
+        Arg:
+            :param: filename:
+
+        :return:
+
+        """
         return re.sub('[^A-Za-z0-9.]+', '_', filename)
 
     @staticmethod
     def get_lines_from_file(path, filename):
+        """Get lines from file
+        Args:
+            :param: path:
+            :param: filename:
+
+        :return:
+
+        """
         with open(path + filename, 'r') as f:
             lines = f.readlines()
             f.close()

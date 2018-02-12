@@ -16,9 +16,10 @@ class GenericTest(BaseTest):
     # TODO Check if we need to keep this class or not
 
     def setUp(self):
-        """
-        This is the setup function, it will be call before every test to run
+        """This is the setup function, it will be call before every test to run
+
         :return: Nothing
+
         """
         self.self_setup()
         if self.config.get_record_scenarios() == 'True':
@@ -26,9 +27,10 @@ class GenericTest(BaseTest):
             self.recorder.start()
 
     def tearDown(self):
-        """
-        This is the teardown function, it will be call after every test to run
+        """This is the teardown function, it will be call after every test to run
+
         :return: Nothing
+
         """
         if self.config.get_capture_end_of_test() == 'True':
             self.take_capture()

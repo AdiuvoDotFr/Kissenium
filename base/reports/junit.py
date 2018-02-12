@@ -16,6 +16,11 @@ class JunitResults:
         self.results = ResultsParser.results_to_array(results)
 
     def generate(self):
+        """Generate
+
+        :returns: Nothing
+
+        """
         logger = Log4Kissenium.get_logger("Kissenium")
         try:
             root = ET.Element("testsuites")

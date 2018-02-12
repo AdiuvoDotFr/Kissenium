@@ -12,11 +12,11 @@ class JsTools:
     dim_status = False
     logger = None
     page_wait = None
-    js_injector = """
-            var include_js = function(url, callback){
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = url;
+    js_injector =
+        """ var include_js = function(url, callback){
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
                 if (callback) {
                     script.onreadystatechange = callback;
                     script.onload = script.onreadystatechange;
@@ -26,18 +26,19 @@ class JsTools:
             }
 
             var include_css = function(url, callback){
-                var css = document.createElement('link');
-                css.type = 'text/css';
-                css.rel = 'stylesheet';
-                css.href = url;
-                document.getElementsByTagName('head')[0].appendChild(css);
-                console.log("CSS loaded");
+            var css = document.createElement('link');
+            css.type = 'text/css';
+            css.rel = 'stylesheet';
+            css.href = url;
+            document.getElementsByTagName('head')[0].appendChild(css);
+            console.log("CSS loaded");
             }
 
             var create_target = function(){
                 document.body.innerHTML += '<span id="kissenium"></span>';
             }
-         """
+        
+        """
 
     def __init__(self, message_status, dim_status, logger, page_wait):
         self.message_status = message_status
@@ -46,6 +47,17 @@ class JsTools:
         self.page_wait = page_wait
 
     def message(self, browser, message, message_timing=4, pause=2):
+        """Get message
+
+        Args:
+            :param: browser:
+            :param: message:
+            :param: message_timing:
+            :param: pause:
+
+        :return:
+
+        """
         self.logger.info("[InjectMessage] message: Messaging status : %s | Message to send : %s "
                          % (self.message_status, message))
         if self.message_status == "True":
@@ -55,6 +67,16 @@ class JsTools:
             time.sleep(pause)
 
     def dim_by_id(self, browser, element_id, timing=2):
+        """Get dim by id
+
+        Args:
+            :param: browser:
+            :param: element_id:
+            :param: timing:
+
+        :return:
+
+        """
         self.logger.info(
             "[InjectMessage] dim: Messaging status : %s" % self.dim_status)
         if self.dim_status == "True":
@@ -64,6 +86,14 @@ class JsTools:
             browser.execute_script("$('#%s').undim();" % element_id)
 
     def inject_dependencies(self, browser):
+        """Inject dependencies
+
+        Args:
+            :param browser:
+
+        :return:
+
+        """
         if self.message_status == "True" or self.dim_status == "True":
             try:
                 browser.find_element(By.__dict__.get('ID'), "kissenium")

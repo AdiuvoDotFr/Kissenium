@@ -10,6 +10,11 @@ class ResultsParser:
 
     @staticmethod
     def get_stats(results, start):
+        """Get stats
+
+        :returns:
+
+        """
         try:
             duration = datetime.datetime.now() - start
             tests_runned = 0
@@ -46,6 +51,11 @@ class ResultsParser:
 
     @staticmethod
     def add_test_in(r, t, status):
+        """Add test in
+
+        :returns: Nothing
+
+        """
         try:
             if status == "success":
                 obj = t
@@ -78,6 +88,11 @@ class ResultsParser:
 
     @staticmethod
     def results_to_array(results):
+        """Get results to array
+
+        :returns: r
+
+        """
         r = {}
         # Successes
 

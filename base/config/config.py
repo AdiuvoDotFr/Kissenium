@@ -43,7 +43,7 @@ class Config:
     def get_run_parallel(self):
         """Get the run parallel config.
 
-        :return :
+        :return:
             String True or False.
 
          """
@@ -62,7 +62,7 @@ class Config:
     def get_log_level(self):
         """Get the log level
 
-        :return :
+        :return:
             String.
 
         """

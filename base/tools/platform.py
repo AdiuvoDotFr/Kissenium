@@ -13,6 +13,11 @@ class Platform:
 
     @staticmethod
     def get_os():
+        """Get os
+
+        :return:
+
+        """
         if platform == "linux" or platform == "linux32":
             current_platform = "linux"
         elif platform == "darwin":
@@ -23,6 +28,11 @@ class Platform:
 
     @staticmethod
     def get_arch():
+        """Get architecture
+
+        :return:
+
+        """
         if struct.calcsize('P') * 8 == 64:
             arch = "amd64"
         else:
@@ -31,6 +41,14 @@ class Platform:
 
     @staticmethod
     def get_webdriver(browser):
+        """Get webdriver
+
+        Arg:
+            :param: browser:
+
+        :return:
+
+        """
         # TODO Finish this function
         logger = Log4Kissenium.get_logger("Kissenium")
         os_name = Platform.get_os()

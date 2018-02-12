@@ -12,11 +12,14 @@ class Log4Kissenium:
         self.config = Config()
 
     def setup(self, name, path):
-        """
-        Every log file will be created in "reports/" folder.
-        :param name: Filename of the log
-        :param path: Relative path of the log
-        :return: logger
+        """Every log file will be created in "reports/" folder.
+
+        Args:
+            :param: name: Filename of the log
+            :param: path: Relative path of the log
+
+        :returns: logger
+
         """
         final_path = SmallTools.get_reports_folder(path)
 
@@ -30,6 +33,11 @@ class Log4Kissenium:
         return logger
 
     def get_log_level(self):
+        """Get log level
+
+        :returns: log level
+
+        """
         if self.config.get_log_level() == "DEBUG":
             log_level = logging.DEBUG
         elif self.config.get_log_level() == "INFO":
@@ -44,4 +52,9 @@ class Log4Kissenium:
 
     @staticmethod
     def get_logger(name):
+        """Get logger
+
+        :returns: log
+
+        """
         return logging.getLogger(name)

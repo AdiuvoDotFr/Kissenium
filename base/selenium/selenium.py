@@ -40,6 +40,9 @@ class Selenium:
 
     def __handle_exception(self, message):
         """Handle Selennium exception
+
+        :returns: String False or True
+
         """
         self.logger.error(message)
         if self.config.get_capture_on_fail() == "True":
@@ -50,6 +53,9 @@ class Selenium:
 
     def maximize(self):
         """Maximize browser window
+
+        :returns: Nothing
+
         """
         self.browser.maximize_window()
         self.logger.info("Browser window has been maximized.")
@@ -57,8 +63,12 @@ class Selenium:
     def resize_window(self, width, height):
         """Resize browser window to width and height
 
-        :param width: Int
-        :param height: Int
+        Args:
+            :param: width: Int
+            :param: height: Int
+
+        :returns:
+
         """
         self.browser.set_window_size(width, height)
         self.logger.info("Browser window has been resized to : %s x %s." % (width, height))
@@ -66,22 +76,33 @@ class Selenium:
     def alert(self, message, duration, pause):
         """Display a message into the browser (if activated in kissenium.ini file)
 
-        :param message: Your message
-        :param duration: Duration of the display
-        :param pause: Time while nothing will be done
+        Args:
+            :param: message: Your message
+            :param: duration: Duration of the display
+            :param: pause: Time while nothing will be done
+
+        :returns:
+
         """
         self.js.message(self.browser, message, duration, pause)
 
     def dim(self, e_id, duration):
         """Dimming the page to get one element lighter
 
-        :param e_id: The id of the element
-        :param duration: Duration of the dimming
+        Args:
+            :param: e_id: The id of the element
+            :param: duration: Duration of the dimming
+
+        :returns:
+
         """
         self.js.dim_by_id(self.browser, e_id, duration)
 
     def quit(self):
         """Quitting the browser
+
+        :returns:
+
         """
         self.browser.quit()
 
@@ -89,15 +110,23 @@ class Selenium:
     def get(self, url):
         """Get one url into the browser
 
-        :param url:
+        Arg:
+            :param: url:
+
+        :returns:
+
         """
         self.browser.get(url)
 
     def page_wait(self, by_type, element):
         """Wait for one element to be present in the web page, and block execution while not present
 
-        :param by_type:
-        :param element:
+        Args:
+            :param: by_type:
+            :param: element:
+
+        :returns:
+
         """
         try:
             WebDriverWait(self.browser, int(self.config.get_page_wait())).until(
@@ -114,14 +143,22 @@ class Selenium:
     def page_wait_for_id(self, element):
         """Wait for id to be present in the page
 
-        :param element:
+        Arg:
+            :param: element:
+
+        :returns:
+
         """
         self.page_wait('ID', element)
 
     def page_wait_for_xpath(self, element):
         """Wait for xpath to be present in the webpage
 
-        :param element:
+        Arg:
+            :param: element:
+
+        :returns:
+
         """
         self.page_wait('XPATH', element)
 
@@ -129,9 +166,12 @@ class Selenium:
     def test_element(self, by_type, path):
         """Test if the element is present in the page
 
-        :param by_type:
-        :param path:
+        Args:
+            :param: by_type:
+            :param: path:
+
         :return: Boolean
+
         """
         self.browser.find_element(By.__dict__.get(by_type), value=path)
         self.logger.info("[test_element] Success : %s -- %s " % (type, path))
@@ -140,8 +180,12 @@ class Selenium:
     def get_element(self, by_type, path):
         """Get element in page
 
-        :param by_type:
-        :param path:
+        Args:
+            :param: by_type:
+            :param: path:
+
+        :returns:
+
         """
         try:
             el = self.browser.find_element(By.__dict__.get(by_type), path)
@@ -153,8 +197,12 @@ class Selenium:
     def get_elements(self, by_type, path):
         """Get multiple elements by type
 
-        :param by_type: Type of dom manipulation to use
-        :param path: Path to use for the query
+        Args:
+            :param: by_type: Type of dom manipulation to use
+            :param: path: Path to use for the query
+
+        :returns:
+
         """
         try:
             el = self.browser.find_elements(By.__dict__.get(by_type), path)
@@ -167,7 +215,11 @@ class Selenium:
     def get_element_by_xpath(self, xpath):
         """Get element by xpath
 
-        :param xpath:
+        Arg:
+            :param: xpath:
+
+        :returns:
+
         """
         return self.get_element("XPATH", xpath)
 
@@ -175,7 +227,11 @@ class Selenium:
     def get_element_by_id(self, e_id):
         """Get element by id
 
-        :param e_id:
+        Arg:
+            :param: e_id:
+
+        :returns:
+
         """
         return self.get_element("ID", e_id)
 
@@ -183,7 +239,11 @@ class Selenium:
     def get_element_text_by_xpath(self, xpath):
         """Get element by xpath
 
-        :param xpath:
+        Arg:
+            :param: xpath:
+
+        :returns:
+
         """
         return self.get_element_text_by_xpath(xpath).text
 
@@ -191,7 +251,11 @@ class Selenium:
     def get_elements_by_xpath(self, xpath):
         """Get all elements corresponding to xpath
 
-        :param xpath:
+        Arg:
+            :param: xpath:
+
+        :returns:
+
         """
         return self.get_elements("XPATH", xpath)
 
@@ -199,7 +263,11 @@ class Selenium:
     def get_first_element_by_xpath(self, xpath):
         """Get first element corresponding to xpath
 
-        :param xpath:
+        Arg:
+            :param: xpath:
+
+        :returns:
+
         """
         el = self.get_elements_by_xpath(xpath)
         for e in el:
@@ -211,8 +279,12 @@ class Selenium:
     def send_keys(self, element, keys):
         """Send keys to element
 
-        :param element: Element to send keys
-        :param keys: Keys to send
+        Args:
+            :param: element: Element to send keys
+            :param: keys: Keys to send
+
+        :returns:
+
         """
         element.send_keys(keys)
         self.logger.info("[send_keys] Success : %s " % keys)
@@ -221,8 +293,12 @@ class Selenium:
     def send_keys_by_id(self, e_id, keys):
         """Find element by id and send keys to it
 
-        :param e_id: Element id
-        :param keys: Keys to send
+        Args:
+            :param: e_id: Element id
+            :param: keys: Keys to send
+
+        :returns:
+
         """
         e = self.get_element_by_id(e_id)
         self.send_keys(e, keys)
@@ -232,8 +308,12 @@ class Selenium:
     def send_keys_by_xpath(self, xpath, keys):
         """Find element by xpath and send keys to it
 
-        :param xpath: Xpath to find element
-        :param keys: Keys to send
+        Args:
+            :param: xpath: Xpath to find element
+            :param: keys: Keys to send
+
+        :returns:
+
         """
         e = self.get_element_by_xpath(xpath)
         self.send_keys(e, keys)
@@ -243,7 +323,11 @@ class Selenium:
     def click_first_xpath(self, xpath):
         """Click first element finded by xpath
 
-        :param xpath:
+        Arg:
+            :param: xpath:
+
+        :returns:
+
         """
         el = self.get_first_element_by_xpath(xpath)
         el.click()
@@ -253,7 +337,11 @@ class Selenium:
     def click_id(self, e_id):
         """Click element by id
 
-        :param e_id:
+        Arg:
+            :param: e_id:
+
+        :returns:
+
         """
         self.get_element_by_id(e_id).click()
         self.logger.info("[click_first_xpath] Success : %s " % e_id)
@@ -261,6 +349,12 @@ class Selenium:
     @exception("Error closing the tab")
     def close_tab(self):
         """Close the browser tab
+
+        Args:
+            :param:
+
+        :returns:
+
         """
         self.browser.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 'w')
         self.logger.info("[close_tab] Success")
@@ -269,7 +363,11 @@ class Selenium:
     def scroll_to_xpath(self, xpath):
         """Hover one element with xpath
 
-        :param xpath: xpath element to find
+        Arg:
+            :param: xpath: xpath element to find
+
+        :returns:
+
         """
         self.page_wait_for_xpath(xpath)
         element_to_hover = self.browser.find_element_by_xpath(xpath)
@@ -280,7 +378,11 @@ class Selenium:
     def scroll_to_id(self, e_id):
         """Hover one element with xpath
 
-        :param xpath: xpath element to find
+        Arg:
+            :param: xpath: xpath element to find
+
+        :returns:
+
         """
         self.page_wait_for_id(e_id)
         element_to_hover = self.browser.find_element_by_id(e_id)
@@ -291,7 +393,11 @@ class Selenium:
     def scroll_to_element(self, e):
         """Hover one element
 
-        :param xpath: xpath element to find
+        Arg:
+            :param: xpath: xpath element to find
+
+        :returns:
+
         """
         self.browser.execute_script("arguments[0].scrollIntoView();", e)
         self.logger.info("[scroll_to_element] Success")
@@ -300,7 +406,11 @@ class Selenium:
     def move_cursor_to(self, xpath):
         """Hover one element with xpath
 
-        :param xpath: xpath element to find
+        Arg:
+            :param: xpath: xpath element to find
+
+        :returns:
+
         """
         self.page_wait_for_xpath(xpath)
         element_to_hover = self.browser.find_element_by_xpath(xpath)

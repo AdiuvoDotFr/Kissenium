@@ -29,9 +29,19 @@ class HtmlRender:
                 self.files.append(f)
 
     def render_template(self, template_filename, context):
+        """Get the render template
+
+        :returns:
+
+        """
         return self.tpl_env.get_template(template_filename).render(context)
 
     def create_index(self):
+        """Create index
+
+        :returns: Nothing
+
+        """
         content = {
             'title': self.title,
             'files': self.files,

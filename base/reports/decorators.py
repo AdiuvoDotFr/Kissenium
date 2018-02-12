@@ -3,9 +3,11 @@
 from functools import wraps
 
 def exception(message=None):
-    """
-    A decorator that wraps the passed in function and logs
+    """A decorator that wraps the passed in function and logs
     @param message: The message to print (optionnal)
+
+    :returns:
+
     """
     def decorator(func):
         @wraps(func)
@@ -30,8 +32,10 @@ def exception(message=None):
 
 
 def assertion_error():
-    """
-    A decorator to use in comparing assert
+    """A decorator to use in comparing assert
+
+    :returns:
+
     """
     def decorator(func):
         @wraps(func)

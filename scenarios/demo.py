@@ -21,18 +21,16 @@ from base.generics.test import GenericTest
 
 class TestDemo(GenericTest):
 
-    """
-        This is a demo class who will show-up most of the functionalities of this small test environment.
+        """This is a demo class who will show-up most of the functionalities of this small test environment.
         PLease check the kissenium.ini file for more configuration
         If you need to run your tests in a specific order, you can add an order number after the method keyword 'test'
         Like this:
             def test_4_test_name(self):
                 # My test
-    """
+        """
 
     def test_1_from_google_search(self):
-        """
-        Run a test wich start from google
+        """Run a test wich start from google
         :return:
         """
         # Our first assert will be to check the google title
