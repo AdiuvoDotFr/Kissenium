@@ -52,11 +52,7 @@ class Screenshot:
         :return:
         """
         with mss.mss() as sct:
-            sct_img = sct.grab(sct.monitors[1])
-            img = Image.frombytes('RGBA', sct_img.size, bytes(sct_img.raw), 'raw', 'BGRA')
-            img = img.convert('RGB')
-            output = self.reports_folder + filename
-            img.save(output)
+            sct.shot(output=self.reports_folder + filename)
 
     def capture_browser(self, browser, filename):
         """

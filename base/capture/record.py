@@ -66,24 +66,20 @@ class Record(threading.Thread):
         try:
             filelist = sorted(glob.glob("reports/tmp/" + self.test + "-*.png"))
             last_image = max(filelist, key=os.path.getctime)
-            os.system('ffmpeg -loglevel panic -hide_banner -nostats -framerate 5 -i reports/tmp/' + self.test
-                      + '-%06d.png -c:v libx264 -vf "format=yuv420p" reports/tmp/' + self.test + '_body.avi')
+            os.system('ffmpeg -loglevel panic -hide_banner -nostats -f image2 -framerate 8 -i reports/tmp/' + self.test
+                      + '-%06d.png -vcodec libx264 -crf 25 -pix_fmt yuv420p reports/tmp/' + self.test + '_body.avi')
             os.system('ffmpeg -loglevel panic -hide_banner -nostats -loop 1 -t 1 -i ' + last_image
-                      + ' -c:v libx264 -vf "format=yuv420p" reports/tmp/' + self.test + '_lastimg.avi')
+                      + ' -c:v libx264 -vf "format=yuv420p" reports/tmp/' + self.test + '_lastimg.mp4')
             os.system('ffmpeg -loglevel panic -hide_banner -nostats -i "concat:reports/tmp/' + self.test
-                      + '_body.avi|reports/tmp/' + self.test + '_lastimg.avi" -c copy ' + self.reports_folder
-                      + self.test + '.avi')
+                      + '_body.mp4|reports/tmp/' + self.test + '_lastimg.mp4" -c copy ' + self.reports_folder
+                      + self.test + '.mp4')
         except Exception as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
 
     def take_captures(self, sct, i):
         try:
-            sct_img = sct.grab(sct.monitors[1])
-            img = Image.frombytes('RGBA', sct_img.size, bytes(sct_img.raw), 'raw', 'BGRA')
-            img = img.convert('RGB')
-            output = 'reports/tmp/' + self.test + '-' + "{0:0=6d}".format(i) + '.png'
-            img.save(output)
+            sct.shot(output='reports/tmp/' + self.test + '-' + "{0:0=6d}".format(i) + '.png')
         except Exception as e:
             self.logger.error(e)
             self.logger.error(traceback.format_exc())
