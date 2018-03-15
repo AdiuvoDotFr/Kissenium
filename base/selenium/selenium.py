@@ -219,7 +219,7 @@ class Selenium:
     @exception("Error getting the text element by xpath")
     def get_element_text_by_xpath(self, xpath):
         """
-        Get element by xpath£*
+        Get element by xpath
         :param xpath:
         :return:
         """
@@ -299,7 +299,7 @@ class Selenium:
         :return:
         """
         el = self.get_first_element_by_xpath(xpath)
-        el.click()
+        self.browser.execute_script("arguments[0].click();", el)
         self.logger.info("[click_first_xpath] Success : %s " % xpath)
 
     @exception("Error clicking the element by id")
@@ -343,7 +343,7 @@ class Selenium:
         self.page_wait_for_id(e_id)
         element_to_hover = self.browser.find_element_by_id(e_id)
         self.browser.execute_script("arguments[0].scrollIntoView();", element_to_hover)
-        self.logger.info("[hover_by_xpath] Success")
+        self.logger.info("[scroll_to_id] Success")
 
     @exception()
     def scroll_to_element(self, e):
