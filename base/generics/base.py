@@ -22,9 +22,6 @@ class BaseTest(unittest.TestCase):
 
     def self_setup(self):
         """This is the setup class
-
-        :return: Nothing
-
         """
         self.has_error = False
         self.logger = self.get_logger()
@@ -36,9 +33,6 @@ class BaseTest(unittest.TestCase):
 
     def self_teardown(self):
         """This is the teardown class
-
-        :return: Nothing
-
         """
         self.selenium.quit()
         self.logger.info("End of %s - %s Test", self.__class__.__name__, self._testMethodName)
@@ -46,8 +40,8 @@ class BaseTest(unittest.TestCase):
     def get_logger(self):
         """For internal class use only, get the logger
 
-        :return: Log4Kissenium
-
+        Return::
+            Log4Kissenium()
         """
         logger = Log4Kissenium().setup(self._testMethodName, self.__class__.__name__)
         logger.info("Starting %s-%s Test", self.__class__.__name__, self._testMethodName)

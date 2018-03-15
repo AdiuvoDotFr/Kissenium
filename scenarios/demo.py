@@ -17,22 +17,21 @@ limitations under the License.
 """
 
 from base.generics.test import GenericTest
+import unittest
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class TestDemo(GenericTest):
+    """This is a demo class who will show-up most of the functionalities of this small test environment.
+    PLease check the kissenium.ini file for more configuration
+    If you need to run your tests in a specific order, you can add an order number after the method keyword 'test'
+    Like this:
+        def test_4_test_name(self):
+            # My test
+    """
 
-        """This is a demo class who will show-up most of the functionalities of this small test environment.
-        PLease check the kissenium.ini file for more configuration
-        If you need to run your tests in a specific order, you can add an order number after the method keyword 'test'
-        Like this:
-            def test_4_test_name(self):
-                # My test
-        """
-
+    @unittest.skip("This is an example of a skipped test.")
     def test_1_from_google_search(self):
-        """Run a test wich start from google
-        :return:
-        """
         # Our first assert will be to check the google title
         self.selenium.get('https://www.google.fr')
         self.selenium.alert("This test will go trough standard browsing on the web with some tests.", 5, 3)
@@ -76,6 +75,7 @@ class TestDemo(GenericTest):
         self.l_assertEqual("https://github.com/mozilla/geckodriver/", r.get_attribute("href"))
         self.selenium.alert("End of the browsing test", 2, 2)
 
+    @unittest.skip("This is an example of a skipped test.")
     def test_2_resize_demo(self):
         """
         This test show us a browser resize demo
@@ -97,14 +97,22 @@ class TestDemo(GenericTest):
         This test show us a small "documentation mode" example
         :return:
         """
-        self.selenium.get('http://www.kissenium.org')
-        self.selenium.alert("Here we show the documentation mode.", 20, 2)
-        self.selenium.alert("This mode is experimental, and work only with elements who have id\\'s", 2, 2)
-        self.selenium.scroll_to_xpath("//h2[@id='kissenium--selenium-framework']")
-        self.selenium.dim("kissenium--selenium-framework", 2)
-        self.selenium.alert("Think about scrolling the element before dim the page arround it.", 4, 1)
-        self.selenium.alert("Use \\'self.st.hover_by_xpath\\'", 3, 2)
-        self.selenium.scroll_to_xpath("//h2[@id='functionalities-done-and-to-do']")
-        self.selenium.dim("functionalities-done-and-to-do", 2)
-        self.selenium.scroll_to_xpath("//h2[@id='authors-contributors']")
-        self.selenium.dim("authors-contributors", 2)
+        self.selenium.get('http://www.adiuvo.fr')
+        img = self.selenium.get_element_by_xpath('//div[contains(@class,"l-box-lrg")]//img')
+        link = self.selenium.get_element_by_xpath('//a[@href="/blog/tag:SSH"]')
+        action = ActionChains(self.selenium.browser)
+        action.move_to_element(img).perform()
+        action.move_to_element(link)
+        action.click()
+        action.perform()
+
+        # self.selenium.alert("Here we show the documentation mode.", 20, 2)
+        # self.selenium.alert("This mode is experimental, and work only with elements who have id\\'s", 2, 2)
+        # self.selenium.scroll_to_xpath("//h2[@id='kissenium--selenium-framework']")
+        # self.selenium.dim("kissenium--selenium-framework", 2)
+        # self.selenium.alert("Think about scrolling the element before dim the page arround it.", 4, 1)
+        # self.selenium.alert("Use \\'self.st.hover_by_xpath\\'", 3, 2)
+        # self.selenium.scroll_to_xpath("//h2[@id='functionalities-done-and-to-do']")
+        # self.selenium.dim("functionalities-done-and-to-do", 2)
+        # self.selenium.scroll_to_xpath("//h2[@id='authors-contributors']")
+        # self.selenium.dim("authors-contributors", 2)

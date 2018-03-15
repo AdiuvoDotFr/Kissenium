@@ -22,20 +22,18 @@ from base.tools.sm_tools import SmallTools
 
 class Record(threading.Thread):
     """This class permit to record the local screen where is running the selenium test
+
+    :String scenario: Scenario name.
+    :String test: Test name.
     """
     stop_recording = False
     scenario = ""
 
     def __init__(self, scenario, test):
-        """Initialition of the Record class.
-
+        """
         Note:
             if we wan't to record distant execution of kissenium (not implemented for now),
             we could think of using vnc server on the remote executor.
-
-        Args:
-            scenario (str): Scenario name.
-            test (str): Test name.
 
         """
         threading.Thread.__init__(self)
@@ -48,9 +46,6 @@ class Record(threading.Thread):
 
     def start(self):
         """Start recording your screen
-
-        :return:
-
         """
         try:
             thread = threading.Thread(name='ScreenRecorder', target=self.record_screen)
@@ -62,8 +57,6 @@ class Record(threading.Thread):
 
     def record_screen(self):
         """Record the screen
-
-        :return:
         """
         # TODO The mac solution might be the nicest solution for every system
         if Platform.get_os() == "mac":
@@ -84,15 +77,11 @@ class Record(threading.Thread):
 
     def stop(self):
         """Stop the current record action
-
-        :return:
         """
         self.stop_recording = True
 
     def generate_video(self):
         """Generate videos from bunch of images, make the last image last longer in the video
-
-        :return:
         """
         try:
             filelist = sorted(glob.glob("reports/tmp/" + self.test + "-*.png"))
@@ -113,9 +102,8 @@ class Record(threading.Thread):
     def take_captures(self, sct, i):
         """Take capture of the screen
 
-        :param sct: mss instance
-        :param i: Id of the image
-        :return:
+        :mss sct: mss instance
+        :Integer i: Id of the image
         """
         try:
             sct_img = sct.grab(sct.monitors[1])
@@ -129,8 +117,6 @@ class Record(threading.Thread):
 
     def clean_tmp(self):
         """Clean the tmp dir when the video has been generated
-
-        :return:
         """
         target = glob.glob("reports/tmp/" + self.test + "*")
         SmallTools.delete_from_glob(target)
@@ -138,8 +124,6 @@ class Record(threading.Thread):
 
     def ffmpeg_record_mac(self):
         """Take many small video of the screen while not self.stop.recording
-
-        :return:
         """
         try:
             i = 0
@@ -157,8 +141,6 @@ class Record(threading.Thread):
 
     def ffmpeg_merge_tmp_videos(self):
         """Generate long video from bunch of small videos
-
-        :return:
         """
         try:
             if Platform.get_os() == "mac":

@@ -97,6 +97,7 @@ class SmallTools:
     @staticmethod
     def get_lines_from_file(path, filename):
         """Get lines from file
+
         Args:
             :param: path:
             :param: filename:

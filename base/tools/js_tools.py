@@ -12,33 +12,32 @@ class JsTools:
     dim_status = False
     logger = None
     page_wait = None
-    js_injector =
-        """ var include_js = function(url, callback){
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = url;
-                if (callback) {
-                    script.onreadystatechange = callback;
-                    script.onload = script.onreadystatechange;
-                }
-                document.getElementsByTagName('head')[0].appendChild(script);
-                console.log("Scrip loaded");
-            }
-
-            var include_css = function(url, callback){
-            var css = document.createElement('link');
-            css.type = 'text/css';
-            css.rel = 'stylesheet';
-            css.href = url;
-            document.getElementsByTagName('head')[0].appendChild(css);
-            console.log("CSS loaded");
-            }
-
-            var create_target = function(){
-                document.body.innerHTML += '<span id="kissenium"></span>';
-            }
+    js_injector = """ var include_js = function(url, callback){
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.src = url;
+                        if (callback) {
+                            script.onreadystatechange = callback;
+                            script.onload = script.onreadystatechange;
+                        }
+                        document.getElementsByTagName('head')[0].appendChild(script);
+                        console.log("Scrip loaded");
+                    }
         
-        """
+                    var include_css = function(url, callback){
+                    var css = document.createElement('link');
+                    css.type = 'text/css';
+                    css.rel = 'stylesheet';
+                    css.href = url;
+                    document.getElementsByTagName('head')[0].appendChild(css);
+                    console.log("CSS loaded");
+                    }
+        
+                    var create_target = function(){
+                        document.body.innerHTML += '<span id="kissenium"></span>';
+                    }
+                
+                """
 
     def __init__(self, message_status, dim_status, logger, page_wait):
         self.message_status = message_status
