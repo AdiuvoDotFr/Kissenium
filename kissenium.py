@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
-"""
-Copyright 2017 Adiuvo
+"""Copyright 2017-2018 Adiuvo
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -34,29 +33,55 @@ from base.tools.sm_tools import SmallTools
 
 
 class Kissenium:
-    """
-    Run all defined kissenium tests
-    Solution for parrallel execution finded here :
-        https://stackoverflow.com/questions/38189461/how-can-i-execute-in-parallel-selenium-python-tests-with-unittest
+    """Kissenium is a free software to run selenium tests
+
+    To define new scenarios, please check the examples given in ``./scenarios`` folder.
+
+    First run:
+        You will need to create a new class file and add it to ``__init__.py``. Then,
+        you can declare your new scenario like the following::
+
+            def __init__(self):
+                ...
+                self.test_classes_to_run = [scenarios.TestDemo, scenarios.ParallelDemo]
+                ...
+
+    Then you can run your tests:
+
+        From your virtual environment::
+
+            $(Kissenium) ./kissenium.py
+
+    Note:
+        Don't forget to check the `kissenium.ini`` file. Here you will be able to activate
+        or deactivate the main functionalities.
+
+    Developers:
+        Here are the commands that you will need:
+            * Pylint::
+
+                $(Kissenium) pylint kissenium.py base/
+
+            * Documentation::
+
+                $(Kissenium) make clean && make html
     """
 
     def __init__(self):
-        """
-        Init Kissenium Runner class
+        """Init Kissenium Runner class
         """
         self.start = datetime.datetime.now()
         self.prepare_for_run()
         self.config = Config()
         self.logger = Log4Kissenium().setup("Kissenium", "Kissenium")
         self.logger.info("Logger created.")
-        self.test_classes_to_run = [scenarios.TestDemo, scenarios.ParallelDemo]
         self.loader = TestLoader()
         self.suites = []
 
     @staticmethod
     def clean_reports_folder():
-        """
-        Clean reports folder on every run
+        """Clean reports folder on every run
+
         :return:
         """
         reports_list = glob.glob("reports/*")
@@ -65,20 +90,20 @@ class Kissenium:
             SmallTools.delete_from_glob(g)
 
     def prepare_for_run(self):
-        """
-        Prepare the report folders for Kissenium execution
+        """Prepare the report folders for Kissenium execution
+
         :return:
         """
         self.clean_reports_folder()
         SmallTools.check_path("reports/tmp")
 
     def execution(self):
-        """
-        Execute Kissenium with a signle test runner
+        """Execute Kissenium with a single test runner
+
         :return:
         """
         results = {}
-        for test_class in self.test_classes_to_run:
+        for test_class in scenarios.__actives__:
             suite = self.loader.loadTestsFromTestCase(test_class)
             self.suites.append(suite)
 
@@ -90,15 +115,23 @@ class Kissenium:
         return (results['single_runner'].wasSuccessful()), results
 
     def parallel_execution(self):
-        """
-        Execute kissenium with parallels tests runners
-        You can modify the max number of parallel runners in kissenium.ini
+        """Execute kissenium with parallels tests runners
+
+        You can disable (or enable) the parallels runners, and modify the max number of threads in
+        ``kissenium.ini``::
+
+            RunParallel = True
+            MaxParallel = 5
+
+        Solution for parrallel execution finded here:
+            https://stackoverflow.com/questions/38189461/how-can-i-execute-in-parallel-selenium-python-tests-with-unittest
+
         :return:
         """
         suite = TestSuite()
         results = {}
 
-        for test in self.test_classes_to_run:
+        for test in scenarios.__actives__:
             suite.addTest(TestLoader().loadTestsFromTestCase(test))
 
         with ThreadPoolExecutor(max_workers=int(self.config.get_max_parallel())) as executor:
@@ -118,8 +151,8 @@ class Kissenium:
         return True, results
 
     def run(self):
-        """
-        Run Kissenium tests
+        """Run Kissenium tests
+
         :return:
         """
         self.logger.info('Launching tests ...')
@@ -134,7 +167,6 @@ class Kissenium:
         HtmlRender(results, self.start).create_index()
         JunitResults(results, self.start).generate()
         sys.exit(not status)
-
 
 
 if __name__ == '__main__':
